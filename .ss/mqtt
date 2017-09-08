@@ -1,0 +1,92 @@
+
+Device logs/stationmode
+
+[Sep  2 17:28:09.210] mgos_fs_put_handler  Appended 512 bytes to conf0.json
+[Sep  2 17:28:10.036] mgos_fs_put_handler  Appended 512 bytes to conf0.json
+[Sep  2 17:28:10.449] mgos_fs_put_handler  Appended 118 bytes to conf0.json
+[Sep  2 17:28:11.912] mgos_system_restart_ Rebooting in 100 ms
+[Sep  2 17:28:12.025] mgos_vfs_umount_all  Unmounting filesystems
+[Sep  2 17:28:12.029] mgos_vfs_dev_close   20032d4c refs 0
+[Sep  2 17:28:12.129] 
+
+[Sep  2 17:28:12.129] 
+[Sep  2 17:28:12.875] S0c_mqtt.bin.0@20000000+193205+.2002b225
+
+[Sep  2 17:28:13.201] 
+[Sep  2 17:28:13.209] cc3200_init          c_mqtt 1.0 (20170902-103855/???)
+[Sep  2 17:28:13.214] cc3200_init          Mongoose OS 2017090210 (20170902-103855/???)
+[Sep  2 17:28:13.220] cc3200_init          RAM: 67252 total, 53644 free
+[Sep  2 17:28:13.973] start_nwp            NWP v2.8.0.0 started, host driver v1.0.1.11
+[Sep  2 17:28:13.993] cc3200_init          Boot cfg 0: 0xfffffffffffffffe, 0x0, c_mqtt.bin.0 @ 0x20000000, spiffs.img.0
+[Sep  2 17:28:14.002] mgos_vfs_dev_open    slfs_container ({"prefix": "spiffs.img.0"}) -> 20032d4c
+[Sep  2 17:28:14.013] cc3200_vfs_dev_slfs_ 20032d4c spiffs.img.0.0 98304 0xfffffffffffffff6
+[Sep  2 17:28:14.020] mgos_vfs_mount       Mount SPIFFS @ / (dev 20032d4c, opts ) -> 200333cc
+[Sep  2 17:28:14.392] mgos_vfs_mount       /: size 83081, used: 25853, free: 57228
+[Sep  2 17:28:14.397] mgos_vfs_mount       Mount SLFS @ /slfs (dev 0, opts ) -> 20033824
+[Sep  2 17:28:14.404] mgos_vfs_mount       /slfs: size 0, used: 0, free: 0
+[Sep  2 17:28:14.665] mgos_sys_config_init MAC: F45EAB9C576B
+[Sep  2 17:28:14.669] mgos_sys_config_init WDT: 30 seconds
+[Sep  2 17:28:14.672] mgos_wifi_set_config WiFi mode: STA
+[Sep  2 17:28:14.676] mgos_wifi_setup_sta  WiFi STA: Connecting to SORGENSYSTEMS
+[Sep  2 17:28:15.841] mgos_http_server_ini HTTP server started on [80]
+[Sep  2 17:28:15.846] mg_rpc_channel_mqtt  20033d1c test/rpc/#
+[Sep  2 17:28:15.850] mgos_i2c_create      I2C initialized (SDA: 2, SCL: 1, freq 100000)
+[Sep  2 17:28:15.856] mg_rpc_channel_uart  2003409c UART0
+[Sep  2 17:28:15.860] mgos_init            Init done, RAM: 67252 total, 48268 free, 47216 min free
+[Sep  2 17:28:15.873] mgos_net_on_change_c WiFi STA: connecting
+[Sep  2 17:28:16.536] mgos_net_on_change_c WiFi STA: connected
+[Sep  2 17:28:16.726] mgos_net_on_change_c WiFi STA: ready, IP 192.168.1.140, GW 192.168.1.1, DNS 202.65.144.162
+[Sep  2 17:28:16.734] mgos_mqtt_global_con MQTT connecting to test.mosquitto.org:1883
+[Sep  2 17:28:16.771] mongoose_poll        New heap free LWM: 44776
+[Sep  2 17:28:17.052] mongoose_poll        New heap free LWM: 43384
+[Sep  2 17:28:17.249] mgos_mqtt_ev         MQTT Connect (1)
+[Sep  2 17:28:17.556] mgos_mqtt_ev         MQTT CONNACK 0
+[Sep  2 17:28:17.559] ev_handler           CONNACK: 0
+[Sep  2 17:28:17.578] sub                  Subscribing to SS/smartswitch (id 1)
+[Sep  2 17:28:17.599] mgos_mqtt_ev         Subscribing to 'test/rpc'
+[Sep  2 17:28:17.619] mgos_mqtt_ev         Subscribing to 'test/rpc/#'
+[Sep  2 17:28:17.687] mgos_sntp_query      SNTP query to pool.ntp.org
+[Sep  2 17:28:17.761] mongoose_poll        New heap free LWM: 42216
+[Sep  2 17:28:17.868] mgos_sntp_ev         SNTP reply from 52.66.76.135: time 1504353498.343922, local 1504353498.684000, delta -0.340078
+[Sep  2 17:28:17.885] ev_handler           Subscription 1 acknowledged
+
+
+
+
+
+
+Device logs/ap mode
+
+[Sep  2 17:31:23.197] mgos_fs_get_handler  Sending conf9.json
+[Sep  2 17:31:43.647] mgos_fs_put_handler  Receiving conf9.json
+[Sep  2 17:31:43.650] mgos_fs_put_handler  Written 158 bytes to conf9.json
+[Sep  2 17:31:43.997] mgos_system_restart_ Rebooting in 100 ms
+[Sep  2 17:31:44.113] mgos_vfs_umount_all  Unmounting filesystems
+[Sep  2 17:31:44.117] mgos_vfs_dev_close   20032d4c refs 0
+[Sep  2 17:31:44.221] 
+
+[Sep  2 17:31:44.222] 
+[Sep  2 17:31:44.967] S0c_mqtt.bin.0@20000000+193205+.2002b225
+
+[Sep  2 17:31:45.292] 
+[Sep  2 17:31:45.300] cc3200_init          c_mqtt 1.0 (20170902-103855/???)
+[Sep  2 17:31:45.305] cc3200_init          Mongoose OS 2017090210 (20170902-103855/???)
+[Sep  2 17:31:45.311] cc3200_init          RAM: 67252 total, 53644 free
+[Sep  2 17:31:46.064] start_nwp            NWP v2.8.0.0 started, host driver v1.0.1.11
+[Sep  2 17:31:46.084] cc3200_init          Boot cfg 0: 0xfffffffffffffffe, 0x0, c_mqtt.bin.0 @ 0x20000000, spiffs.img.0
+[Sep  2 17:31:46.093] mgos_vfs_dev_open    slfs_container ({"prefix": "spiffs.img.0"}) -> 20032d4c
+[Sep  2 17:31:46.104] cc3200_vfs_dev_slfs_ 20032d4c spiffs.img.0.1 98304 0xfffffffffffffff5
+[Sep  2 17:31:46.111] mgos_vfs_mount       Mount SPIFFS @ / (dev 20032d4c, opts ) -> 200333cc
+[Sep  2 17:31:46.484] mgos_vfs_mount       /: size 83081, used: 25853, free: 57228
+[Sep  2 17:31:46.490] mgos_vfs_mount       Mount SLFS @ /slfs (dev 0, opts ) -> 20033824
+[Sep  2 17:31:46.496] mgos_vfs_mount       /slfs: size 0, used: 0, free: 0
+[Sep  2 17:31:46.746] mgos_sys_config_init MAC: F45EAB9C576B
+[Sep  2 17:31:46.749] mgos_sys_config_init WDT: 30 seconds
+[Sep  2 17:31:46.753] mgos_wifi_set_config WiFi mode: AP
+[Sep  2 17:31:47.909] mgos_wifi_dev_ap_set AP Mongoose_9C576B configured
+[Sep  2 17:31:47.918] mgos_http_server_ini HTTP server started on [80]
+[Sep  2 17:31:47.923] mg_rpc_channel_mqtt  20033cf4 test/rpc/#
+[Sep  2 17:31:47.927] mgos_i2c_create      I2C initialized (SDA: 2, SCL: 1, freq 100000)
+[Sep  2 17:31:47.933] mg_rpc_channel_uart  20034074 UART0
+[Sep  2 17:31:47.936] mgos_init            Init done, RAM: 67252 total, 48308 free, 47216 min free
+
