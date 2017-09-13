@@ -99,7 +99,7 @@ int main(void)
     			data += 4;
     		if((GPIO_PinInGet(gpioPortD, D3))==1)
     			data += 8;
-  	   //Reading address bits
+  	//Reading address bits
     		if((GPIO_PinInGet(gpioPortD, A0))==1)
     			address += 1;
     		if((GPIO_PinInGet(gpioPortD, A1))==1)
@@ -110,19 +110,16 @@ int main(void)
     			address += 8;
 
     		if(predata > address){				//finding greater address values
-    			printf("\ngrades: ");
-    			for(int a=0;a<=index-1;a++)  //printing previous values
-    				printf("%d ",grades[a]);
-    			printf("\nprices: ");
-    			for(int a=0;a<=index-1;a++)  //printing previous values
-    			    	printf("%d ",prices[a]);
     			index=0;
-    			}
+    		}
+
+		printf("address: %d \tdata: %d\n",address,data);
+
     		grades[index]=address;
     		prices[index]=data;
     		predata=address;
 
     		index++;
-    		}
-	 }
+    	}
+    }
 }
