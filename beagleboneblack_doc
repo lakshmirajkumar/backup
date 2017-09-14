@@ -1,0 +1,2503 @@
+neeraj@radius.wifigrid.co
+
+google api key:AIzaSyB8Zs5n8NQDNAbT9Fbd_hN8zpl3ObybRi8
+
+
+
+touch screen rotation:
+vim /usr/share/X11/xorg.conf.d/10-evdev.conf 
+add this line 
+	Option "SwapAxes" "1"
+	Option "InvertX" "0"
+  	Option "InvertY" "0"
+
+voice to speech:
+===============
+https://pythonspot.com/en/speech-recognition-using-google-speech-api/
+
+motion eye:
+===========
+https://github.com/ccrisan/motioneye/wiki/Installation
+http://www.howtoembed.com/projects/raspberry-pi/95-motioneye-with-raspberry-pi
+
+jsmpeg:
+======
+https://github.com/phoboslab/jsmpeg
+
+node websocket-relay.js rajkumar 8000 8001
+
+ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 -f mpegts -codec:v mpeg1video -s 640x480 -b:v 1000k -bf 0 http://localhost:8000/supersecret
+
+
+
+
+ "Linkdin" : {"Link" :" ","hcard":{"fn":" ","photo":" ","person":{"location":" ","org":" ","role":" "}}}
+
+
+insert into tc_master(njson_data) values('
+{
+"Name":"","Father/Husbends_Name" :"",
+"Tele" :{
+	"Home" :"",
+	"Alt" :""
+	},
+"Dob" :"",
+"E-mail" :"",
+"Gender" :"",
+"Address" : {
+	"Local" :"",
+	"Permanent" :""
+	},
+"Nationality" :"",
+"Linkdin": {
+		"Link" :" ",
+		"hcard":{
+			"fn":" ",
+			"photo":" ",
+			"person":{
+				"location":" ",
+				"org":" ",
+				"role":" "
+				}
+			}
+	   }
+}')
+
+head, sep, tail = string.partition(string.split('|',6)[6])
+print head
+
+sed -n '1,1500000p' < input_file >
+sed -i '<line_number>d' <input_file> 
+
+
+Raspberry pi3:
+=============
+https://raspinterest.wordpress.com/2016/11/30/yocto-project-on-raspberry-pi-3/
+http://www.jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html 
+https://harrisonsand.com/can-on-the-	raspberry-pi/
+
+Enable spi to can(mcp2515):
+===========================
+add following lines in config.txt
+
+dtparam=spi=on
+dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25
+dtoverlay=spi-bcm2835
+
+Enable Uart:
+===========
+add the following line in local.conf
+	ENABLE_UART = "1"
+
+Enabling WIFI and BLE:
+----------------------
+
+Add following line to local.conf
+
+	DISTRO_FEATURES_append += " bluez5 bluetooth wifi"
+	IMAGE_INSTALL_append += " vim linux-firmware-brcm43430 bluez5 i2c-tools python-smbus bridge-utils hostapd dhcp-server iptables wpa-supplicant"
+
+Add following lines to bblayers.conf
+
+	${BSPDIR}/sources/meta-openembedded/meta-python \ 
+	${BSPDIR}/sources/meta-openembedded/meta-networking \
+
+	$ cd ~/rpi/
+	$ sources/poky/oe-init-build-env rpi-build
+
+Build Image with new recipes and features
+	$ bitbake [image-name]
+
+Copy the newly built image in SD card Boot Raspberry Pi 3 with newly built image. 
+	$ sudo dd if=~/rpi/rpi-build/tmp/deploy/images/raspberrypi3/rpi-basic-image-raspberrypi3.rpi-sdimg of=/dev/mmcblk1 bs=4M
+
+Edit wpa_supplicant file
+
+	# vi /etc/wpa_supplicant.conf
+
+Change to content to following
+
+ctrl_interface=/var/run/wpa_supplicant 
+ctrl_interface_group=0 
+update_config=1 
+network={ 
+	ssid="MPARK_OFFICES-1" 
+	psk="indianarmy"  
+}
+
+Restart Rpi3 reboot Log in to Raspberry Pi 3 and configure Wi-Fi 
+	# ifup wlan0
+
+
+run commands at startup time of yocto:
+-------------------------------------
+update-rc.d myscript defaults 99
+/etc/init.d/myscript start
+
+
+DISTRO_FEATURES_append += " bluez5 bluetooth wifi"
+IMAGE_INSTALL_append = " vim \
+                        linux-firmware-brcm43430 \
+                        bluez5 \
+                        i2c-tools \
+                        python-smbus \
+                        bridge-utils \
+                        hostapd \
+                        dhcp-server \
+                        iptables \
+                        wpa-supplicant \
+                        openssh \
+                        canutils "
+
+LORA Gateway:
+=============
+http://www.instructables.com/id/Use-Lora-Shield-and-RPi-to-Build-a-LoRaWAN-Gateway/
+
+buy online:
+----------
+https://www.aliexpress.com/item/RFM95W-RFM95-868MHz-LORA-SX1276-wireless-transceiver-module-20DBM-3KM-Best-quality/32810607598.html?spm=2114.search0304.4.1.NLAn7r
+
+
+
+Kaa webinar:
+===========
+link: https://www.youtube.com/watch?v=55z9t4AA1mE
+http://13.126.103.255
+
+
+public dns for my aws server:
+-----------------------------
+http://ec2-54-183-206-82.us-west-1.compute.amazonaws.com:9080/sandbox/
+
+how to configure the kaa-sandbox to aws server:
+-----------------------------------------------
+link: http://docs.kaaproject.org/display/KAA/Launching+the+Kaa+Sandbox+AMI
+http://docs.kaaproject.org/display/KAA/Linux
+
+kaa-application development:
+----------------------------
+https://kaaproject.github.io/kaa/docs/v0.10.0/Programming-guide/Using-Kaa-endpoint-SDKs/C/SDK-ESP8266/#flashing
+
+Orangepi zero:
+=============
+https://github.com/orangepi-xunlong/orangepi_h2_linux
+
+https://github.com/ccrisan/linux-orangepi
+http://www.orangepi.org/Docs/Building.html
+
+can interface:
+--------------
+https://forum.armbian.com/index.php?/topic/3588-can-bus-support-orange-pi-zero/
+
+
+Unbricking boundarydevices board:
+=================================
+-> compile the yocto source code with ( mtd-utils ) support this will give you the flash_erase flashcp some commands to erase and copy the images to the memory.
+-> boot the board from usb recovery mode and wait for the kernel and rootfs loading.
+-> after booting check the device you want to format.
+-> # cat /proc/mtd
+	it will display the partitions of nor memory like below.
+	mtd0 --> uboot
+	mtd1 --> env
+	mtd2 --> splash
+-> Now format the partition using flash_erase command.
+	# flash_erase /dev/mtd2 0 0  
+-> Done,it will erase the splash partition (/dev/mtd2).Now you have to upgrade the u-boot using imx-usb-tool and run upgradeu commands.
+
+ph sesor with arduino:
+----------------------
+http://blog.circuits4you.com/2015/06/ph-sensor-arduino.html
+
+http://www.instructables.com/id/SOLAR-POWERED-ARDUINO-WEATHER-STATION/
+
+
+OBD 2:
+======
+http://www.obdsol.com/knowledgebase/obd-software-development/reading-real-time-data/
+
+CSI camera module
+=================
+http://www.raybiztech.com/services/embedded-systems-services/imx-6-solutions/bring-up-of-ov5640-camera-with-mipi-interface
+
+
+emqttd Downloading and installing from source :(http://emqtt.io/docs/v2/install.html#installing-from-source)
+===============================================
+https://sites.google.com/site/comptekkia/erlang/how-to-install-erlang-on-ubuntu-10-10
+
+
+Broker requires Erlang/OTP R18+ and git client to build:
+
+Install Erlang:
+-------------- 
+--> Go to this link ( http://www.erlang.org/ ) click on [ Download Erlang/OTP ] select on the right of the link [ OTP 18.2.1 ] it will show list on right side on that select [ OTP 18.2.1 Source File (100009971) ] it will take sometime to download .
+--> After downloading and extract it by 
+	-> tar -xf otp_src_18.2.1.tar.gz
+   		install the necessary packages to build
+	-> sudo apt-get install fop libncurses5-dev unixodbc-dev g++ libssl-dev libwxbase2.8 libwxgtk2.8-dev libgtk2.0-dev libqt4-opengl-dev
+	-> cd  otp_src_18.2.1
+	-> ./configure
+	-> make 
+	-> sudo make install
+
+--> which erl
+	/usr/local/bin/erl
+		
+
+Install git:
+-----------
+--> sudo apt-get install git
+
+When all dependencies are ready, clone the emqttd project from github.com and build:
+
+--> git clone https://github.com/emqtt/emq-relx.git
+--> cd emq-relx && make
+--> cd _rel/emqttd && ./bin/emqttd console
+
+TCP Ports Used
+----------------------------------------------
+1883	MQTT Port
+8883	MQTT/SSL Port
+8083	MQTT(WebSocket), HTTP API Port
+8084	MQTT(WebSocket/SSL), HTTP API Port
+18083	Web Dashboard Port
+----------------------------------------------
+
+
+cd /opt/emqttd && ./bin/emqttd start
+
+
+mjpg-streamer:
+============
+link: 
+https://www.youtube.com/watch?v=ydFw7aanWUo
+
+vedio:
+------
+https://www.summet.com/blog/2015/12/06/ubuntu-14-04-mjpg_streamer-install-attempt/
+dpkg-query -L mjpg-streamer
+
+./mjpg_streamer -i "./input_uvc.so -yuv -d /dev/video0" -o "./output_http.so -w ./www"
+
+
+for image:
+
+$ wget http://localhost:8080/?action=snapshot -O output.jpg
+
+for video:
+
+$ http://localhost:8080/?action=stream
+
+save video:
+
+$ wget -O outpufilenamep.mjpg --user xxx --password pass http://127.0.0.1:8090/?action=stream
+$ ffmpeg -i outfilenamep.mjpg testing.mp4
+
+ _____________________________________________________________________________________________
+|have to try:										      |	
+|============										      |	
+|ffmpeg -i http://127.0.0.1:8080/?action=stream -c copy output.mp4                            |
+|ffmpeg -i http://admin:admin@192.2.2.1:554/dd-a -c copy -map 0 -f segment -segment_time 300 -segment_format mp4 "outfile.mp4"
+|ffmpeg -i "http://169.254.128.10:81/livestream.cgi?user=admin&pwd=&streamid=0&audio=0&filename=" -c:v libx264 -an output.mp4
+|https://lucatnt.com/2014/08/record-and-archive-video-from-ip-cameras/
+|ffmpeg -i rtsp://10.2.69.201:554/ch0_0.h264 -f image2 -vf fps=fps=1/120 img%03d.jpg
+|_____________________________________________________________________________________________|
+
+
+agricultural sensors:
+=====================
+
+Atmospheric Pressure Sensor(MPX4115A):
+--------------------------------------
+https://ccollins.wordpress.com/2013/12/11/how-to-measure-air-pressure-with-arduino/
+
+Leaf wetness sensor:
+-------------------
+https://github.com/empierre/arduino/blob/master/LeafWetnessSensor.ino
+
+Humidity sensor:
+----------------
+https://plus.google.com/+PhilBarrett/posts/Jn4G2CwV7W9
+
+temparature sensor:
+------------------
+http://starter-kit.nettigo.eu/2010/how-to-measure-temperature-with-arduino-and-mcp9700/
+
+ldr:
+---
+https://diyhacking.com/arduino-ldr-sensor/
+
+temp+humidity:
+=============
+https://forum.processing.org/one/topic/arduino-processing-sensirion-sht7-humidity-temp-sensor.html
+
+
+
+
+##################################################
+ANT +
+############
+http://forum.arduino.cc/index.php?topic=17152.0
+https://forum.sparkfun.com/viewtopic.php?f=13&t=17017&p=120137
+https://github.com/brodykenrick/ANTPlus_Arduino
+https://www.sparkfun.com/products/retired/8565
+
+
+###################################################
+intel gelileo:
+==============
+debian:
+=======
+http://wiki.ros.org/IntelGalileo/Debian
+Burn images into sd card:	
+sudo dd if=galileo-1.2.img of=/dev/mmcblk0 bs=3M conv=fsync
+
+# parted /dev/mmcblk0 resizepart 2
+
+	 Error: The backup GPT table is not at the end of the disk, as it should be.
+ 	This might mean that another operating system believes the disk is smaller.
+ 	Fix, by moving the backup to the end (and removing the old backup)?
+ 	parted: invalid token: 2
+ 
+Fix/Ignore/Cancel? f
+
+ 	Warning: Not all of the space available to /dev/mmcblk0 appears to be used, you
+ 	can fix the GPT to use all of the space (an extra 5986304 blocks) or continue
+ 	with the current setting? 
+ 
+Fix/Ignore? f
+Partition number? 2
+
+	Warning: Partition /dev/mmcblk0p2 is being used. Are you sure you want to 
+	continue?
+Yes/No? yes
+End?  [944MB]? 2020MB
+
+ 	Error: Partition(s) 2 on /dev/mmcblk0 have been written, but we have been unable to
+ 	inform the kernel of the change, probably because it/they are in use.  As a result, the
+ 	old partition(s) will remain in use.  You should reboot now before making further
+ 	changes.
+Ignore/Cancel? I
+
+# reboot
+# tune2fs -j /dev/mmcblk0p2
+# reboot
+# resize2fs /dev/mmcblk0p2
+
+# apt-get update
+# apt-get install wpasupplicant vim hostapd wireless-tools bridge-utils 
+
+# wpa_passphrase "MPARK OFFICES 2" "mpark9944"
+network={
+        ssid="MPARK OFFICES 2"
+        #psk="mpark9944"
+        psk=6eb921a9e1c47fd67f994eaee90e3c4851c9520fe7b592005eace725dcf2ede4
+}
+
+
+wlan0 bring up on bootup time :
+# vim /etc/network/interfaces
+
+auto wlan0
+iface wlan0 inet dhcp
+        wpa-ssid "MPARK OFFICES 2"
+        wpa-psk 6eb921a9e1c47fd67f994eaee90e3c4851c9520fe7b592005eace725dcf2ede4
+# reboot
+
+
+
+yocto: ( https://github.com/xbolshe/ )
+=====
+
+-------------------------------------------
+|NOTE:sd card should be in fat32 partition |
+--------------------------------------------
+https://software.intel.com/en-us/iot/hardware/galileo/downloads
+
+https://download.ostroproject.org/releases/ostro-os/milestone/2016-03-02_09-51-12-build-399/
+https://github.com/solettaproject/soletta/wiki/Installing-Intel%C2%AE-Galileo-Gen2-pre-built-image
+
+prebuilt image with hostapd:
+----------------------------
+https://github.com/xbolshe/galileo-custom-images/tree/master/iot_1.2.0_kernel_3.19.8
+https://communities.intel.com/thread/98953
+
+wpa_passphrase MPARK_OFFICES-1 mpark9944 > /etc/wpa_supplicant.conf
+
+https://communities.intel.com/thread/57555
+
+
+kernel compilation:
+-------------------
+https://github.com/todorez/galileo-linux-stable
+
+export PATH=~/Ngrid/galileo/BSP_Sources_and_Docs_for_Intel_Quark_v1.2.1.1/meta-clanton_v1.2.1.1/yocto_build/tmp/sysroots/x86_64-linux/usr/bin/i586-poky-linux/:$PATH
+
+cross compiling packages:
+
+http://wiki.beyondlogic.org/index.php?title=Cross_Compiling_iw_wpa_supplicant_hostapd_rfkill_for_ARM
+
+kernel source code path:
+BSP_Sources_and_Docs_for_Intel_Quark_v1.2.1.1/meta-clanton_v1.2.1.1/yocto_build/tmp/work/quark-poky-linux/linux-yocto-quark/3.14-r0/linux$
+
+
+
+Mqtt:
+=====
+https://software.intel.com/en-us/blogs/2015/02/20/building-and-running-mosquitto-mqtt-on-intel-edison
+###############################################################################################################################################
+
+  INSTALL /home/rajkumar/Ngrid/CSI_intel/linux-80211n-csitool/drivers/net/wireless/iwlwifi/dvm/iwldvm.ko
+  INSTALL /home/rajkumar/Ngrid/CSI_intel/linux-80211n-csitool/drivers/net/wireless/iwlwifi/iwlwifi.ko
+  INSTALL /home/rajkumar/Ngrid/CSI_intel/linux-80211n-csitool/drivers/net/wireless/iwlwifi/mvm/iwlmvm.ko
+
+HOSTAPD ON ubuntu:
+==================
+We now need to install 2 additional tools to make out hotspot, 1st one is hostapd(hotspot server), 2nd one is dnsmasq(dns dhcp server)
+
+	$ sudo apt-get install hostapd dnsmasq
+stop those services if started already, and prevent them from starting on system start up.
+
+	$ sudo service hostapd stop
+	$ sudo service dnsmasq stop
+	$ sudo update-rc.d hostapd disable
+	$ sudo update-rc.d dnsmasq disable
+
+Now we need to set up config files. 
+	$ sudo vim /etc/dnsmasq.conf
+add those lines to the config file 
+Code:
+
+	# Bind to only one interface
+	bind-interfaces
+	# Choose interface for binding
+	interface=wlan0
+	# Specify range of IP addresses for DHCP leasses
+	dhcp-range=192.168.150.2,192.168.150.10
+
+hostapd config
+
+	$ sudo vim /etc/hostapd.conf
+
+and add those lines
+
+
+	# Define interface
+	interface=wlan0
+	# Select driver
+	driver=nl80211
+	# Set access point name
+	ssid=myhotspot
+	# Set access point harware mode to 802.11g
+	hw_mode=g
+	# Set WIFI channel (can be easily changed)
+	channel=6
+	
+You can change ssid name and password for anything you want here. Current config will create hotspot named myhotspot with mypassword password.
+
+6. Now create anywhere you want a file named start.sh
+edit it with any text editor like this:
+
+Code:
+
+#!/bin/bash
+# Start
+# Configure IP address for WLAN
+sudo ifconfig wlan0 192.168.150.1
+# Start DHCP/DNS server
+sudo service dnsmasq restart
+# Enable routing
+sudo sysctl net.ipv4.ip_forward=1
+# Enable NAT
+sudo iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+# Run access point daemon
+sudo hostapd /etc/hostapd.conf
+# Stop
+# Disable NAT
+sudo iptables -D POSTROUTING -t nat -o ppp0 -j MASQUERADE
+# Disable routing
+sudo sysctl net.ipv4.ip_forward=0
+# Disable DHCP/DNS server
+sudo service dnsmasq stop
+sudo service hostapd stop
+
+You will probably need to change ppp0 in this to eth0 (or any other number which refers to your wired connection.
+
+7. Last step. Now you can start your hotspot by starting our script. just run it using sudo sh
+for me it looks like this sudo sh /home/ogyct/Desktop/start.sh because I have it on my desktop
+
+
+https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout/using-arduino-ide
+
+
+Matlab download:
+https://in.mathworks.com/products/compiler/mcr.html
+
+Mex file:
+
+https://www.gnu.org/software/octave/doc/v4.0.1/Getting-Started-with-Mex_002dFiles.html
+
+############################################################################################################################################
+				IMX-6
+############################################################################################################################################
+prebuilt images:
+	link:https://boundarydevices.com/ubuntu-trusty-for-i-mx6-boards-december-2015-kernel-3-14-28-2/
+
+	$ sudo umount /dev/sdc*
+	$ zcat 20151204-nitrogen-3.14.28_1.0.0_ga-trusty-en_US-lxde_armhf.img.gz | sudo dd of=/dev/sdX bs=1M
+	$ sync
+
+ubuntu prebuilt:
+	Link: https://boundarydevices.com/ubuntu-xenial-mx67-boards-august-2016-kernel-4-1-15/
+
+u-boot-imx6:
+===========
+	link:https://boundarydevices.com/compiling-latest-u-boot-for-i-mx6-2015-edition/
+
+	$ sudo apt-get install gcc-arm-linux-gnueabihf
+	$ git clone https://github.com/boundarydevices/u-boot-imx6 -b boundary-v2015.07
+	$ cd u-boot-imx6
+	$ find . -name "nit*defconfig"
+	export ARCH=arm
+	$ export CROSS_COMPILE=arm-linux-gnueabihf-
+	$ make nitrogen6q_defconfig
+	$ make all
+
+copy compiled image into the sdcard:
+
+	$ cp u-boot.imx /dev/sdd1/u-boot.nitrogen6q
+
+bootargs for hdmi:
+	https://community.nxp.com/thread/343918
+
+Kernel :
+=======
+	Link: https://boundarydevices.com/cross-compile-i-mx6-kernel-using-ltib-toolchain/
+	
+	$ git clone git://github.com/boundarydevices/linux-imx6.git
+	$ cd linux-imx6
+	$ git checkout origin/boundary-imx_4.1.15_2.0.0_ga
+	$ sudo apt-get install gcc-arm-linux-gnueabihf
+
+								     	
+	$ wget https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q1-update/+download/gcc-arm-none-eabi-4_9-2015q1-20150306-linux.tar.bz2    	
+	$ tar -xvf gcc-arm-none-eabi-4_9-2015q1-20150306-linux.tar.bz2									     	
+	$ export PATH=gcc-arm-none-eabi-4_9-2015q1/bin/:$PATH										     	
+	$ export ARCH=arm
+	$ export CROSS_COMPILE=arm-none-eabi-
+	$ make nitrogen6x_defconfig
+	$ make uImage modules LOADADDR=0x10008000
+
+
+		IF REQUIRED
+		-----------
+	Installing our own kernel module path:
+		$ mkdir imx6_modules
+		$ make INSTALL_MOD_PATH=imx6_modules/ modules_install
+		$ cp -ravf imx6_modules/lib/modules/* /media/rootfs/lib/modules/
+
+
+YOCTO:
+======
+To get the YOCTO source you need to have repo installed and use it as:
+	
+	Link: https://github.com/Freescale/fsl-community-bsp-platform
+		
+		$ sudo apt-get install gawk wget git-core diffstat unzip texinfo  build-essential chrpath libsdl1.2-dev xterm curl
+	Install the repo utility:
+	
+		$ mkdir ~/bin
+		$ curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+		$ chmod a+x ~/bin/repo
+
+	Download the source:
+
+		$ PATH=${PATH}:~/bin
+		$ mkdir fsl-community-bsp
+		$ cd fsl-community-bsp
+		$ repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b krogoth
+		$ repo sync
+
+	Setup the environment for iMX6:
+		$ source setup-environment build
+	
+	*Note: We will use 'imx6qsabresd', but if you need, you can set a different board here (you don't have to do this step):
+		$ nano conf/local.conf	
+
+		$ bitbake core-image-minimal
+
+	The final outputs and images are located at:
+		$ cd tmp/deploy/images 
+
+	Flash SDCard Image:
+
+if output image is [core-image-minimal-imx6qsabresd.sdcard.gz] Run this command
+		$ gunzip -c tmp/deploy/images/imx6qsabresd/core-image-minimal-imx6qsabresd.sdcard.gz | sudo dd of=/dev/sd(X) bs=4M
+		$ sync
+
+if output image is [core-image-minimal-imx6qsabresd.sdcard] Run this command
+		$ sudo dd if=tmp/deploy/images/imx6qsabresd/core-image-minimal-imx6qsabresd.sdcard of=/dev/sd(X) bs=1M 
+		$ sync # Wait a few seconds after this completes
+
+
+		--> Insert the card into the SD card slot on the top EDM module (that contains the processor).
+		--> Connect a serial cable to the UART and open your favorite serial console program.
+		--> Configure your serial console for 115200 8N1, with no hardware flow control
+		--> Optionally, connect an Ethernet cable
+		--> Power on the platform. You should see output during the boot process.
+		--> Upon booting, you will be presented with a login.
+		--> Log in as root with no password.
+
+
+Android lollipop:
+=================
+	link:https://boundarydevices.com/android-lollipop-5-0-0-ga-release-for-i-mx6-boards/
+
+
+Humming board:
+-------------
+https://tthtlc.wordpress.com/2014/06/10/walkthrough-into-custom-setup-for-device-tree-uboot-and-miscellaneous-for-cubox-i4-pro/
+
+CuBox-i U-Boot > load mmc 0:1 0x18000000 imx6q-cubox-i.dtb
+CuBox-i U-Boot > load mmc 0:1 0x10800000 zImage
+CuBox-i U-Boot > bootz 0x10800000 - 0x18000000
+
+How to connect to your router via WIFI?:
+----------------------------------------
+	$ nmtui-connect YOUR_ROUTER_SSID
+prebuilt:
+	https://dl.armbian.com/cubox-i/archive/
+		(Default user name root, password 1234)
+
+	http://solidrun.maltegrosse.de/ubuntu/	
+
+	$ 7z e <image name>.7z
+	$ dd bs=4k conv=fsync if=<image name>.img of=/dev/sdb
+
+ubuntu image for humming board:
+==============================
+http://wiki.solid-run.com/doku.php?id=products:imx6:software:os:ubuntu	
+
+#############################################################################################################################################
+				OPEN WRT+free rADIUS
+#############################################################################################################################################
+https://www.dd-wrt.com/wiki/index.php/How_to_configure_DD-WRT,_Chillispot,_Apache2,_FreeRadius,_freeradius-dialupadmin,_and_MySQL_on_Debian_4.0
+
+
+http://opensource.telkomspeedy.com/wiki/index.php/OpenWRT:_Setup_Coova-Chilli
+
+
+open wrt+ssh
+============
+https://wiki.openwrt.org/doc/howto/firstlogin
+#############################################################################################################################################
+http://codereview.stackexchange.com/questions/88901/probe-request-capturing-with-scapy
+
+
+
+https://www.raspberrypi.org/documentation/linux/kernel/building.md
+
+##############################################################################################################################################
+						OPEN FACE
+						=========
+https://groups.google.com/forum/#!topic/cmu-openface/A6TIQs0P2jU
+
+
+
+##############################################################################################################################################
+				Ubuntu 12.04 LTS + Freeradius + Coova-Chill + daloRADIUS 
+##############################################################################################################################################
+link :https://ubuntuforums.org/showthread.php?t=2070298
+
+
+
+Interface devices not showing on wireshark tool
+===============================================
+
+sudo groupadd wireshark
+sudo usermod -a -G wireshark $USER
+sudo chgrp wirshark /usr/bin/dumpcap
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+
+
+##############################################################################################################################################
+wifidog
+=======
+
+http://dev.wifidog.org/wiki/doc/install/gateway
+
+
+$ sudo apt-get install libtool
+
+$ sudo apt-get install automake
+
+$ sudo apt-get install autoconf
+
+
+
+config link:  https://www.youtube.com/watch?v=EcABrhLpkvg&t=133s
+
+
+
+73	Option 3. Use the full buildroot directly (time consuming...)
+74	   cd wifidog
+75	   make dist
+76	   cd ~
+77	   wget http://downloads.openwrt.org/kamikaze/7.09/kamikaze_7.09.tar.bz2
+78	   tar -jxvf kamikaze_7.09.tar.bz2
+79	   cp -R wifidog/contrib/build-openwrt-kamikazeipk/wifidog kamikaze_7.09/package/
+80	   cp wifidog/wifidog-1.1.5.tar.gz kamikaze_7.09/dl/
+81	   cd kamikaze_7.09
+82	   make menuconfig #(Follow instructions on OpenWRT's site to setup your buildroot for your platform)
+83	   make #(could take hours downloading and compiling all dependencies)
+84	
+85	For Kamikaze 8.09 and up, there is an extra dependency to add to the package, so here would be the new procedure
+86	   cd wifidog
+87	   make dist
+88	   cd ~
+89	   wget http://downloads.openwrt.org/kamikaze/8.09/kamikaze_8.09.tar.bz2
+90	   tar -jxvf kamikaze_8.09.tar.bz2
+91	   cp -R wifidog/contrib/build-openwrt-kamikazeipk8.09up/wifidog kamikaze_8.09/package/
+92	   cp wifidog/wifidog-1.1.5.tar.gz kamikaze_8.09/dl/
+93	   cd kamikaze_8.09
+94	   make menuconfig #(Follow instructions on OpenWRT's site to setup your buildroot for your platform)
+95	   make #(could take hours downloading and compiling all dependencies)
+
+
+###############################################################################################################################################
+Quadcopter
+==========
+	link: https://www.element14.com/community/groups/internet-of-things/blog/2014/08/10/melolontha--building-an-iot-quadcopter
+	
+		https://www.hackster.io/mirkix/flying-beaglebone-green-448b60
+
+
+
+###############################################################################################################################################
+1//http://www.nxp.com/products/sensors/pressure-sensors/tire-pressure-monitoring-sensors/fxth87-tire-pressure-monitor-sensor-family:FXTH87?&cof=0&am=0&tab=Buy_Parametric_Tab
+
+2//http://maxembedded.com/2011/09/rf-module-interfacing-without-microcontrollers/
+	https://www.robomart.com/rf-module-and-anteena?xpage=1&xoffset=413
+
+3//http://www.ebay.in/itm/201609619596?aff_source=Sok-Goog
+
+4//http://potentiallabs.com/cart/8051-ic?gclid=CjwKEAiAg5_CBRDo4o6e4o3NtG0SJAB-IatYhNuaAbPk-e10IjT3Jt8e3rRmLO1QfC2i6bIdfVhEehoCrRjw_wcB4
+
+	http://cache.freescale.com/files/microcontrollers/doc/user_guide/USBMLUNIVERSALUG.pdf
+
+#################################################################################################################################################
+
+###########################
+sudo iw phy phy0 interface add mon0 type monitor
+iw dev
+sudo ifconfig mon0 up
+
+airodump-ng mon0 -w test -o csv
+
+Mesh network :
+
+	https://wiki.openwrt.org/doc/howto/mesh.batman
+
+	https://www.youtube.com/watch?v=SB_MAqxVPTs
+
+mtd -r write openwrt-ar71xx-generic-tl-wr1043nd-v3-squashfs-factory.bin  firmware
+sysupgrade openwrt-ar71xx-generic-tl-wr1043nd-v3-squashfs-sysupgrade.bin 
+
+
+
+
+		#################################
+		# email-id:raj.ngrid@gmail.com  #
+		# passwrd :1234Qwer$	        #
+		#################################
+OPENWRT :
+=========
+scapy for runtime:
+==================
+________________________________________________________________
+iw phy phy0 interface add mon0 type monitor
+ifconfig mon0 up
+/usr/bin/python /bin/wifi_grid.py 2&> /root/nohup.out &
+
+cronetabs:
+
+vim /etc/crontabs/root
+add this line
+	0 12 * * 0 reboot
+then run
+	/etc/init.d/cron restart
+	/etc/init.d/cron enable
+________________________________________________________________
+
+export CC=gcc && make
+******************************************************************
+OPENWRT Configuration:
+----------------------
+
+opkg install mosquitto mosquitto-client libmosquitto
+
+
+luci conf:
+	./scripts/feeds update -a
+	./scripts/feeds install luci
+		open menuconfig
+			Luci -->
+			   	<*> luci
+usb conf:
+	Kernel modules:
+		USB Support:
+			<*> Kmod-usb-storage 
+		Filesystems: 
+			<*> Kmod-fs-ext4
+			<*> Kmod-fs-vfat 
+	Base system: 
+		<M> Block-mount 			
+
+python conf:
+	./scripts/feeds install python
+		 Languages  ---> 
+			 Python  ---> 
+				 <M> python..	
+		
+Coova-chilli conf:
+	./scripts/feeds install coova-chilli
+		Network  --->
+			 Captive Portals  --->
+				<*> coova-chilli......
+Batman-adv conf:
+	./scripts/feeds install kmod-batman-adv				
+	./scripts/feeds install batctl
+	
+	Kernel modules -->
+		Network support-->
+			< > kmod-batman-adv
+	Network-->
+		< > batctl
+
+
+https://www.kernel.org/doc/Documentation/networking/batman-adv.txt
+https://www.youtube.com/watch?v=RptSreJcJs8
+
+********************************************************************
+
+path for wireless drivers in openwrt:
+	openwrt/build_dir/target-mips_34kc_musl-1.1.16/linux-ar71xx_generic/compat-wireless-2016-05-12/drivers/net/wireless/ath/ath9k/
+
+-----------------------------------------------------------------------------
+
+lsmod  |grep ath: for 3.13 kernel
+=================================
+ath9k                 164164  0 
+ath9k_common           13551  1 ath9k
+ath9k_hw              453856  2 ath9k_common,ath9k
+ath                    28698  3 ath9k_common,ath9k,ath9k_hw
+mac80211              638901  1 ath9k
+cfg80211              496328  3 ath,ath9k,mac80211
+
+lsmod |grep ath : for 4.1 kernel
+
+ath9k                 126976  0 
+ath9k_common           32768  1 ath9k
+ath9k_hw              475136  2 ath9k_common,ath9k
+ar9003_csi            106496  1 ath9k_hw
+ath                    32768  3 ath9k_common,ath9k,ath9k_hw
+mac80211              741376  1 ath9k
+cfg80211              552960  4 ath,ath9k_common,ath9k,mac80211
+
+-------------------------------------------------------------------------------
+LiMe:
+-===
+
+ sudo apt-get install git subversion zlib1g-dev gawk flex unzip bzip2 gettext build-essential libncurses5-dev libncursesw5-dev libssl-dev binutils cpp psmisc docbook-to-man
+git clone https://github.com/libremesh/lime-build.git
+cd lime-build/
+ make T=ar71xx menuconfig
+make T=ar71xx P=generic
+
+
+cross compiling for openwrt:
+
+/home/rajkumar/KM_GIT/LiMe/lime-build/build/src/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mips-openwrt-linux-gcc sendData.c -o sendData
+
+/home/rajkumar/KM_GIT/LiMe/lime-build/build/src/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mips-openwrt-linux-gcc -static main.c csi_fun.c -o recs_data
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+git clone git://github.com/openwrt/openwrt.git
+
+	USB mount:
+	
+	$ opkg update;opkg install kmod-usb-storage;opkg install kmod-fs-ext4;opkg install kmod-fs-vfat;opkg install kmod-usb-storage-extras;opkg install block-mount
+
+		it will show /dev/sda1 in dmesg command  	
+
+	Crating Extroot On USB:
+
+		https://wiki.openwrt.org/doc/howto/extroot
+			
+	$ mkdir -p /mnt/usb;mount /dev/sda1 /mnt/usb;mkdir -p /tmp/cproot;mount --bind / /tmp/cproot;tar -C /tmp/cproot -cvf - . | tar -C /mnt/usb -xf -;umount /tmp/cproot;umount /mnt/usb
+
+
+if fstab is not created run this command
+			$ block detect > /etc/config/fstab
+	start fstab at boot 
+			$ /etc/init.d/fstab enable
+	
+
+	Add the following into /etc/config/fstab file :
+		
+			$ vim /etc/config/fstab
+							
+config 'mount'
+    	option  target	/
+        option  device	/dev/sda1
+        option  fstype	ext4
+	option  options	rw,sync
+        option  enabled	1
+	option  enabled_fsck	0			
+config 'swap'
+        option device /dev/sda2
+        option enabled 1
+	
+			$ reboot
+
+	root@openwrt$ mkswap /dev/sda2
+	root@openwrt$ swapon /dev/sda2
+	root@openwrt$ free
+
+	root@OpenWrt:~# df -h
+		Filesystem                Size      Used Available Use% Mounted on
+		/dev/root                 2.0M      2.0M         0 100% /rom
+		tmpfs                    29.4M      1.1M     28.3M   4% /tmp
+		/dev/sda1                 7.2G     56.3M      6.8G   1% /
+		tmpfs                   512.0K         0    512.0K   0% /dev
+	
+	So rootfs mounted from /dev/sda1
+			
+				
+	Installing python on openwrt:
+			
+			$ opkg update;opkg install python
+			$ python
+	Installing scapy:
+			download the scapy and untar it
+			$ wget http://www.secdev.org/projects/scapy/files/scapy-latest.tar.gz
+			$ tar -xzf scapy-latest.tar.gz
+			$ cd scapy-2.1.0/
+			$ python setup.py install	
+			$ wget http://104.131.213.218/wifigrid/paho-mqtt-1.2.tar.gz
+			$ tar -xzf paho-mqtt-1.2.tar.gz
+			$ cd paho-mqtt-1.2/
+			$ python setup.py install
+
+
+Installing packages with external memory:
+=========================================
+	http://bredsaal.dk/installing-python-on-external-storage-with-openwrt
+python dependencies
+	https://blog.nyanpasu.me/install-python-and-pip-on-openwrt/
+
+python mqtt install on openwrt:
+
+	https://www.youtube.com/watch?v=HCBKpKMKdsY
+
+
+
+/home/rajkumar/Ngrid/openwrt/build_dir/target-mips_34kc_musl-1.1.16/linux-ar71xx_generic/linux-4.4.14'
+																																																																																																																																																																																																																																																																																																																					
+
+
+CSI Tool Kit:
+=============
+
+	http://pdcc.ntu.edu.sg/wands/Atheros/document/Atheros-CSI-Tool-User-Guide.pdf
+https://dhalperi.github.io/linux-80211n-csitool/installation.html
+###########################
+https://help.ubuntu.com/community/dhcp3-server
+
+
+$ sudo apt-get install aircrack-ng
+$ sudo airmon-ng start mon
+$ sudo airmon-ng start wlan0
+$ ifconfig
+$ sudo airodump-ng mon0
+ 
+/**********
+wget http://download.aircrack-ng.org/aircrack-ng-1.2-rc4.tar.gz
+tar -zxvf aircrack-ng-1.2-rc4.tar.gz
+cd aircrack-ng-1.2-rc4
+sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev
+make
+make install
+*****************/
+
+
+http://www.libelium.com/products/meshlium/smartphone-detection/
+
+$ sudo ip link set wlan0 promisc on
+$ netstat -i
+$ sudo ip link set wlan0 promisc off
+$ netstat -i
+
+$ sudo iwlist scanning 
+$ sudo arp-scan --interface=wlan0 --localnet
+
+$ nmcli d wifi
+
+http://www.pentesteracademy.com/video?id=470
+
+vendor name:
+
+http://standards-oui.ieee.org/oui/oui.txt
+
+
+wifi security :
+		http://www.pentesteracademy.com/course?id=9
+scapy:
+		http://www.pentesteracademy.com/video?id=464
+
+
+Dot11AssoReq : 802.11 Association Request
+Dot11AssoResp : 802.11 Association Response
+Dot11Auth  : 802.11 Authentication
+Dot11Beacon : 802.11 Beacon
+Dot11Deauth : 802.11 Deauthentication
+Dot11Disas : 802.11 Disassociation
+Dot11Elt   : 802.11 Information Element
+Dot11ProbeReq : 802.11 Probe Request
+Dot11ProbeResp : 802.11 Probe Response
+
+
+============================================================================================================================================
+					MQTT Support
+============================================================================================================================================
+Link:		http://wingsquare.com/blog/setting-up-mqtt-mosquitto-broker-in-ubuntu-linux/
+
+https://www.digitalocean.com/community/questions/how-to-setup-a-mosquitto-mqtt-server-and-receive-data-from-owntracks
+
+$ sudo apt-add-repository ppa:mosquitto-dev/mosquitto-ppa
+$ sudo apt-get update
+	
+$ sudo apt-get install mosquitto
+$ sudo apt-get install libmosquitto-dev
+$ sudo apt-get install mosquitto-clients
+$ sudo service mosquitto status 
+
+
+Testing
+--------
+	Open a terminal and issue the given below command to subscribe the topic “mqtt”
+
+	$ mosquitto_sub -h localhost -t "mqtt" -v
+
+	Open another terminal and issue the given below command to publish message to the topic “mqtt”
+
+	$ mosquitto_pub -h localhost -t "mqtt" -m "Hello MQTT"
+
+$ /sbin/ldconfig
+$ mosquitto -c /etc/mosquitto/mosquitto.conf
+$ mosquitto_sub -h <YourIP> -p 8883 -v -t 'owntracks/#' -u rajkumar -P jesus
+$ mosquitto_pub -h <YourIP> -p 8883 -t "owntracks" -m "Hello MQTT" -u rajkumar -P jesus
+
+=============================================================================================================================================
+						find
+=============================================================================================================================================
+link:	https://doc.internalpositioning.com/
+				click on setup documentation
+
+$ git clone https://github.com/schollz/find.git
+$ cd find
+		
+		$ sudo apt-get install python-software-properties  
+		$ sudo add-apt-repository ppa:duh/golang
+		$ sudo apt-get update
+		$ sudo apt-get install golang
+		$ go version
+			///////go version must be 1.5+//////
+
+////////////////////////////////////////////////////////////////
+GOARCH="amd64"
+GOBIN="/usr/local/go/bin/go"
+GOEXE=""
+GOHOSTARCH="amd64"
+GOHOSTOS="linux"
+GOOS="linux"
+GOPATH="/home/santosh/work"
+GORACE=""
+GOROOT="/usr/local/go"
+GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+GO15VENDOREXPERIMENT="1"
+CC="gcc"
+GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0"
+CXX="g++"
+CGO_ENABLED="1"
+///////////////////////////////////////////////////////////////
+
+		$ export GOROOT=/usr/lib/go
+		$ export GOBIN=/usr/bin/go
+		$ mkdir ~/go
+		$ export GOPATH=$HOME/go
+		$ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+$ go get ./...
+$ go build
+$ ./find
+		/home/rajkumar/Ngrid/find/data
+		SVM is not detected.
+		To install:
+		sudo apt-get install g++
+		wget http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/~cjlin/libsvm+tar.gz
+		tar -xvf libsvm-*.tar.gz
+
+		cd libsvm-*
+		make
+		cp svm-scale /usr/local/bin/
+		cp svm-predict /usr/local/bin/
+																																cp svm-train /usr/local/bin/
+
+Again run $ ./find
+	if it working it will display
+
+		/home/rajkumar/Ngrid/find/data
+		-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----
+		   _________  _____
+		  / __/  _/ |/ / _ \  ______ _____  _____ ____
+		 / _/_/ //    / // / (_-< -_) __/ |/ / -_) __/
+		/_/ /___/_/|_/____/ /___|__/_/  |___/\__/_/
+
+		(version  build devdevde) is up and running on http://192.168.1.27:8003
+		-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----
+	
+
+../go/src/golang.org/x/sys/unix/syscall_solaris.go:180: Getgroups redeclared in this block
+	previous declaration at ../go/src/golang.org/x/sys/unix/syscall_linux.go:196
+
+
+
+
+MQTT support:
+=============
+$ wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+$ sudo apt-key add mosquitto-repo.gpg.key
+$ cd /etc/apt/sources.list.d/
+$ sudo wget http://repo.mosquitto.org/debian/mosquitto-wheezy.list
+$ sudo apt-get update
+$ sudo apt-get install mosquitto-clients mosquitto
+
+$ ./find -mqtt 192.168.1.27:1883 -mqttadmin ADMIN -mqttadminpass ADMIN_PASS -mosquitto `pgrep mosquitto` -p :8003 192.168.1.27:1883
+$ mkdir ~/Ngrid/find/mosquitto
+$ touch ~/Ngrid/find/mosquitto/conf
+$ mosquitto -c ~/Ngrid/find/mosquitto/conf -d
+
+
+./find -mqtt 104.131.213.218:1883 -mqttadmin  aravind -mqttadminpass kd -mosquitto `pgrep mosquitto` -p :8003 104.131.213.218:8003
+
+for running backgroundly:
+
+$ sudo nohup ./find -mqtt 104.131.213.218:1883 -mqttadmin  aravind -mqttadminpass kd -mosquitto `pgrep mosquitto` -p :8003 104.131.213.218:8003 &
+
+curl -X PUT "104.131.213.218:8003/mqtt?group=aravind"
+	{
+    		"message": "You have successfully set your password.",
+    		"password": "vymUCn",
+    		"success": true
+	}
+mosquitto_sub -h 104.131.213.218 -u find -P vymUCn -t "find/location/#"
+
+
+
+root@raj:/home/rajkumar# curl -X PUT "104.131.213.218:8003/mqtt?group=aravind"
+{"message":"Your password exists.","password":"zQfKga","success":true}
+root@raj:/home/rajkumar# curl -X PUT "104.131.213.218:8003/mqtt?group=find"
+{"message":"Your password exists.","password":"vymUCn","success":true}
+
+
+
+
+user name-->find
+password -->mpark9944
+
+changing wlan2 to wlan0:
+========================
+	/etc/udev/rules.d/70-persistent-net.rules
+=============================================================================================================================================
+						RTL8192cu
+=============================================================================================================================================
+sudo ifconfig eth0 192.168.1.10 up
+
+
+https://www.youtube.com/watch?v=HJ9nUqYMjqs
+
+$ sudo apt-get update && sudo apt-get install git build-essential linux-headers-generic dkms
+$ git clone https://github.com/dz0ny/rt8192cu.git --depth 1
+$ cd rt8192cu
+
+
+=============================================================================================================================================
+								PYTHON startup time
+=============================================================================================================================================
+
+$ sudo ntpdate pool.ntp.org
+$ sudo apt-get update
+$ sudo apt-get install build-essential python-dev python-pip -y
+$ git clone git://github.com/adafruit/adafruit-beaglebone-io-python.git
+$ cd adafruit-beaglebone-io-python
+$ sudo python setup.py install
+$ cd ..
+$ sudo rm -rf adafruit-beaglebone-io-python
+
+=============================================================================================================================================
+						PIR Sensor
+=============================================================================================================================================
+
+links:
+		--> https://www.elprocus.com/pir-sensor-circuit-with-working/
+
+	Here, we are using a PIR motion sensor. PIR stands for Passive InfraRed. This motion sensor consists of a fresnel lens, a infrared detector and supporting detection circuitry. The lens on the sensor focuses any infrared radiation present around it towards the infrared detector. Our bodies generate infrared heat and as a result this gets picked up by the motion sensor. The sensor outputs a 5V signal for a period of one minute as soon as it detects the presence of a person. It offers a tentative range of detection of about 6-7 m and is highly sensitive. When the PIR motion sensor detects a person, it outputs a 5V signal to the raspberry pi through its GPIO. And we define what the raspberry pi should do as it detects an intruder through python coding. Here we are just printing: “Intruder detected”.
+
+
+Interfacing PIR with Raspberrypi:
+---------------------------------
+	https://diyhacking.com/raspberry-pi-gpio-control/
+
+
+camera interfacing:
+===================
+https://www.youtube.com/watch?v=8QouvYMfmQo
+
+	$ sudo apt-get install guvcview
+	$ ls /dev/video0
+
+
+https://github.com/Mras2an/Webcam-IP-BeagleBone
+=============================================================================================================================================
+						YOLO
+=============================================================================================================================================
+links:
+		--> http://pjreddie.com/darknet/yolo/
+		--> http://rodrigoberriel.com/2014/10/installing-opencv-3-0-0-on-ubuntu-14-04/
+		--> http://guanghan.info/blog/en/my-works/train-yolo/
+
+Detection Using A Pre-Trained Model:
+====================================	
+	Installing Darknet:
+	-------------------
+	First clone the Darknet git repository 
+	
+		-------------------------------------------------------				
+		| git clone https://github.com/pjreddie/darknet.git   |
+		| cd darknet					      |
+		| make                                                |
+		-------------------------------------------------------
+	
+	Usage :
+	-------
+		-----------------------------------------------------------
+		| ./darknet yolo test [cfg_file] [weight_file] [img_name] |
+		-----------------------------------------------------------
+
+	Example : ./darknet yolo test cfg/yolo.cfg ../yolo.weights data/dog.jpg
+	---------
+
+	Multiple Images:
+	---------------
+		Instead of supplying an image on the command line, you can leave it blank to try multiple images in a row. Instead you will 		see a prompt when the config and weights are done loading:
+
+		./darknet yolo test cfg/yolo.cfg yolo.weights
+
+		0: Crop Layer: 448 x 448 -> 448 x 448 x 3 image
+		1: Convolutional Layer: 448 x 448 x 3 image, 64 filters -> 224 x 224 x 64 image
+		....
+		27: Connected Layer: 4096 inputs, 1225 outputs
+		28: Detection Layer
+		Loading weights from yolo.weights...Done!
+		Enter Image Path:
+
+			Enter an image path like data/eagle.jpg to have it predict boxes for that image. Once it is done it will prompt you 				for more paths to try different images. Use Ctrl-C to exit the program once you are done.
+		
+
+./darknet detector demo yolo.cfg yolo.weights
+
+Installing OpenCV 3.0.0 on Ubuntu 14.04:
+========================================
+
+http://rodrigoberriel.com/2014/10/installing-opencv-3-0-0-on-ubuntu-14-04/
+	
+	--> To install the dependencies required from OpenCV, just run the following commands:
+
+	sudo apt-get -y install libopencv-dev build-essential cmake git libgtk2.0-dev pkg-config python-dev python-numpy libdc1394-22 		libdc1394-22-dev libjpeg-dev libpng12-dev libtiff4-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine-dev 		libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip
+
+	--> Download OpenCV 3.0.0 alpha
+	
+	mkdir opencv
+	cd opencv
+	wget https://github.com/Itseez/opencv/archive/3.0.0-alpha.zip -O opencv-3.0.0-alpha.zip
+	unzip opencv-3.0.0-alpha.zip
+
+	--> Install OpenCV
+
+	cd opencv-3.0.0-alpha
+	mkdir build
+	cd build
+	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
+	make -j $(nproc)
+	sudo make install
+
+	--> Finishing installation
+	
+	sudo /bin/bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'
+	sudo ldconfig
+
+
+
+sudo apt-get install python-tk
+sudo apt-get install python-imaging-tk
+
+
+=============================================================================================================================================
+						TI-ADC
+=============================================================================================================================================
+sudo insmod ti_am335x_adc.ko
+ 
+ubuntu@ubuntu-armhf:~/wether_relay$ dmesg
+[ 4979.278551] tiadc_probe tiadc_probe 455 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278655] tiadc_step_config tiadc_step_config 101 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278684] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278710] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278735] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278759] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278782] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278806] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278830] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278853] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278876] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278900] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278923] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278947] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278970] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.278994] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.279018] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.279041] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.279064] tiadc_writel tiadc_writel 53 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.279090] tiadc_channel_init tiadc_channel_init 339 drivers/iio/adc/ti_am335x_adc.c 
+[ 4979.279123] tiadc_iio_buffered_hardware_setup tiadc_iio_buffered_hardware_setup 279 drivers/iio/adc/ti_am335x_adc.c 
+ubuntu@ubuntu-armhf:~/wether_relay$ 
+
+
+
+
+=============================================================================================================================================
+						ULTRA SONIC SENSOR
+=============================================================================================================================================
+
+link : http://treehouseprojects.ca/ultrasonictutorial/
+
+Basic Steps :
+-------------
+	--> Provide TRIGGER to ultrasonic module.
+	--> Listen for Echo.
+	--> Start Timer when ECHO HIGH is received.
+	--> Stop Timer when ECHO goes LOW.
+	--> Read Timer Value.
+	--> Convert it to Distance.
+	--> Display it.
+
+Module Programming reference:
+https://www.tutorialspoint.com/cprogramming/c_environment_setup.htm
+
+http://derekmolloy.ie/kernel-gpio-programming-buttons-and-leds/
+
+
+http://stackoverflow.com/questions/27066139/how-to-use-request-threaded-irq-so-that-the-interrupt-handler-is-called-while-th
+=============================================================================================================================================
+						YOCTO Project
+=============================================================================================================================================
+BitBake:
+--------
+	BitBake recipes specify how a particular package is built. It includes all the package dependencies, source code locations, configuration, compilation, build, install and remove instructions. It also stores the metadata for the package in standard variables
+
+	The BitBake recipes consist of the source URL (http, https, ftp, cvs, svn, git, local file system) of the package, dependencies and compile or install options. During the build process they are used to track dependencies, performing native or 
+ation of the package and package it so that it is suitable for installation on the local or a target device. It is also possible to create complete images consisting of a root file system and kernel. As a first step in a cross-build setup, the framework will attempt to create a cross-compiler toolchain suited for the target platform.
+
+link --->  http://www.aosabook.org/en/yocto.html
+----
+how to build a yocto project :
+------------------------------
+beagle bone black:
+
+	http://www.jumpnowtek.com/beaglebone/BeagleBone-Systems-with-Yocto.html
+rpi yocto:
+	http://www.jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html
+
+changing server for kernel:(from where the kernel source code will take).
+
+	~/KM_GIT/YOCTO/bbb/meta-bbb/recipes-kernel/linux
+
+path to the kernel source code:
+			
+	===>>>>	~/KM_GIT/YOCTO/bbb/build/tmp/work/beaglebone-poky-linux-gnueabi/linux-stable/4.4-r17/linux-beaglebone-standard-build
+
+imx6:
+
+	https://github.com/Freescale/fsl-community-bsp-platform
+
+=============================================================================================================================================			
+			NFS root on the Beaglebone Black
+=============================================================================================================================================
+		link: http://www.embeddedhobbyist.com/2013/06/beaglebone-black-nfs-root/
+
+$ sudo apt-get update
+$ sudo apt-get install sudo bzip2 git device-tree-compiler
+$ sudo dpkg-reconfigure dash
+
+		--> When the dash dialog comes up select no.
+		--> Then issue the command visudo.
+$ sudo visudo 
+	and at the bottom add
+		------------------------------	
+		|username ALL=(ALL:ALL) ALL  |      ( Where username is the name of the host system user)
+		------------------------------
+Configuring the NFS server
+==========================
+
+$ sudo nano /etc/hosts.allow
+
+Add to the end of the file:
+		------------
+		|ALL: LOCAL|
+		------------
+$ sudo apt-get install nfs-kernel-server nfs-common portmap
+$ mkdir ~/rootfs
+
+$ sudo nano /etc/exports
+	 At the bottom of the file add:
+		---------------------------------------------------------------------------------
+		|/home/username/rootfs xxx.xxx.xxx.xxx(rw,sync,no_root_squash,no_subtree_check) |
+		---------------------------------------------------------------------------------
+( Where username is the normal user you’re logged into, and xxx.xxx.xxx.xxx is the static ip address you’re going to assign to your Beaglebone Black.)
+
+$ sudo exportfs -a
+$ sudo nano /etc/default/services
+	And add to the file
+		 --------		
+		| NFS=1 |
+		 --------
+
+--> Finally, start the nfs-kernel-server service. Then test exports.
+
+$ sudo service nfs-kernel-server start
+$ sudo exportfs
+
+--> Copy the rootfs to the rootfs directory
+
+$ sudo tar xfvp ubuntu-trusty-14.04-rootfs-3.14.4.1-bone-armhf.com.tar.xz -C ~/rootfs/
+
+$ sudo nano ~/rootfs/etc/fstab
+		--------------------------------------------------
+		| /dev/nfs / nfs defaults 0 0			  |
+		| /dev/mmcblk0p1 /boot/uboot auto defaults 0 0    |
+		--------------------------------------------------
+$ sudo nano ~/rootfs/etc/network/interfaces
+		---------------------------------
+		|  auto eth0			|		
+		|  iface eth0 inet static	|
+		|  address xxx.xxx.xxx.xxx	|
+		|  netmask 255.255.255.0	|
+		|  gateway xxx.xxx.xxx.xx	|
+		---------------------------------
+
+--> (address xxx.xxx.xxx.xxx) where xxx.xxx.xxx.xxx is the Beagelebone Blacks’s ip address, and (gateway xxx.xxx.xxx.xxx) where xxx.xxx.xxx.xxx is the ip address to the gateway to the internet on your LAN.
+
+	gateway(192.168.1.1)
+
+	$ sudo nano ~/rootfs/etc/inittab
+		-------------------------------------------------
+	        | T0:23:respawn:/sbin/getty -L ttyO0 115200 vt102|
+		-------------------------------------------------
+--> Finally change the uEnv.txt
+
+#####################################################################################################################################
+serverip=192.168.1.9
+ipaddr=192.168.1.39
+rootpath=/home/km3/rootfs
+console=ttyO0,115200n8
+
+console=ttyO0,115200n8
+optargs=
+
+netargs=setenv bootargs console=${console} ${optargs}  root=/dev/nfs nfsroot=${serverip}:${rootpath},vers=3 rw ip=${ipaddr}
+
+debugargs=setenv bootargs ${optargs} ${cape_disable} ${cape_enable} root=${mmcroot} rootfstype=${mmcrootfstype} ${cmdline} mem=1G@0x80000000 root=/dev/mmcblk0p2 console=ttyO0,115200n8 kgdb=ttyO0,115200 kgdboc=ttyO0,115200n8 kgdbwait rootwait
+loadfdt=load mmc ${mmcdev}:2 ${fdtaddr} /boot/dtbs/${fdtfile}
+
+loaduimage=mw.l 4804c134 fe1fffff; if load mmc 0:2 ${loadaddr} /boot/zImage; then setenv mmcdev 0; mw.l 4804c194 01200000; echo Booting from external microSD...; else setenv mmcdev 1; if test $mmc0 = 1; then setenv mmcroot /dev/mmcblk1p2 rw; fi; load mmc 1:2 ${loadaddr} /boot/zImage; mw.l 4804c194 00c00000; echo Booting from internal eMMC...; fi
+
+mmcboot=run netargs; bootz ${loadaddr} - ${fdtaddr}
+
+uenvcmd=i2c mw 0x24 1 0x3e; run findfdt; if test $board_name = A335BNLT; then setenv mmcdev 1; mmc dev ${mmcdev}; if mmc rescan; then setenv mmc1 1; else setenv mmc1 0; fi; fi; setenv mmcdev 0; mmc dev ${mmcdev}; if mmc rescan; then setenv mmc0 1; else setenv mmc0 0; fi; run loaduimage && run loadfdt && run mmcboot
+
+######################################################################################################################################
+
+
+ubuntu@bbb:~# df -h
+	Filesystem Size Used Avail Use% Mounted on
+	192.168.1.30:/home/rajkumar/rootfs 9.4G 5.0G 4.0G 56% /
+
+
+
+##################################################################################################################################
+					am335x Starter Kit
+##################################################################################################################################
+
+starter kit:
+-------------
+http://processors.wiki.ti.com/index.php/AM335x_U-Boot_User%27s_Guide#U-Boot
+
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide#Start_your_Linux_Development
+
+uboot:
+------
+http://processors.wiki.ti.com/index.php/Linux_Core_U-Boot_User%27s_Guide#Getting_the_U-Boot_Source_Code
+
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_evm_defconfig
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+
+kernel:
+-------
+http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide#Cleaning_the_Kernel_Sources
+
+
+	export PATH=/home/rajkumar/KM_GIT/starterkit/ti-sdk-am335x-evm-08.00.00.00/linux-devkit/sysroots/i686-arago-linux/usr/bin:$PATH
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- ti_sdk_am3x_release_defconfig
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
+	make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x-evmsk.dtb
+
+
+uboot image:
+------------
+https://e2e.ti.com/support/arm/sitara_arm/f/791/t/444677
+
+kernel image:
+-------------
+https://community.nxp.com/thread/304300
+http://developer.toradex.com/knowledge-base/splash-screen-linux
+
+testing tools:
+--------------
+http://processors.wiki.ti.com/index.php/AM335x_Starter_Kit_Diagnostics#Steps_to_run_the_diagnostics_on_a_AM335x_Starter_Kit:
+
+ics source code and prebuilt images :
+--------------------------------------
+http://software-dl.ti.com/dsps/dsps_public_sw/sdo_tii/TI_Android_DevKit/TI_Android_ICS_4_0_3_DevKit_3_0_1/index_FDS.html
+
+jelly bean:
+-----------
+http://processors.wiki.ti.com/index.php/TI-Android-JB-4.2.2-DevKit-4.1.1_DeveloperGuide#To_Build_Android_Linux_Kernel
+
+
+
+KGDB_KDB in UBUNTU 14.04:
+========================
+video for reference: https://www.youtube.com/watch?v=67cxIXLCfUk
+-------------------
+
+minicom						
+========
+
+Entering kdb (current=0xed078000, pid 1) on processor 0 due to Keyboard Entry
+[0]kdb> 
+
+[0]kdb> 
+[0]kdb> 
+[0]kdb> 
+[0]kdb> 
+[0]kdb> 
+[0]kdb> 
+[0]kdb> kgdb
+Entering please attach debugger or use $D#44+ or $3#33
+	
+	        ------------------------------------------------------------------
+		|(blocking) Now close minicom and run the vmlinux on host system |
+		------------------------------------------------------------------
+
+				vmlinux
+				=======
+			run the vmlinux using gdb cross compiler
+			
+			$ arm-linux-gnueabihf-gdb vmlinux
+			 
+			GNU gdb (crosstool-NG linaro-1.13.1-4.7-2012.10-20121022 - Linaro GCC 2012.10) 7.5-2012.09
+			Copyright (C) 2012 Free Software Foundation, Inc.
+			License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+			This is free software: you are free to change and redistribute it.
+			There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+			and "show warranty" for details.
+			This GDB was configured as "--host=i686-build_pc-linux-gnu --target=arm-linux-gnueabihf".
+			For bug reporting instructions, please see:
+			<https://bugs.launchpad.net/gcc-linaro>...
+			Reading symbols from /home/rajkumar/KM_GIT/amcu-kernel-3.14/vmlinux...done.
+			(gdb) 
+			
+			(gdb) target remote /dev/ttyUSB1
+			Remote debugging using /dev/ttyUSB1
+			kgdb_breakpoint () at kernel/debug/debug_core.c:1042
+			1042		arch_kgdb_breakpoint();
+			(gdb) c
+			Continuing.
+
+			--------------------------------------------------------
+			| It will block now connect the target system with ssh |
+			--------------------------------------------------------
+
+											
+											ssh
+											===
+						                $ ssh ubuntu@192.168.1.27
+								   ubuntu@192.168.1.27's password: 
+								   Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.1+ armv7l)
+
+								   * Documentation:  https://help.ubuntu.com/
+								   Last login: Thu Jan  1 00:01:35 1970 from 192.168.1.33
+
+								ubuntu@ubuntu-armhf:~$ sudo su
+								[sudo] password for ubuntu: 
+
+								root@ubuntu-armhf:/home/ubuntu# echo g > /proc/sysrq-trigger
+								
+								-----------------------------------------------------------------------------		
+								| Now it will block goto vmlinux terminal and put breakpoint at any funtion |
+								-----------------------------------------------------------------------------
+
+				vmlinux
+				=======
+			[New Thread 642]
+			Program received signal SIGTRAP, Trace/breakpoint trap.
+			[Switching to Thread 642]
+			kgdb_breakpoint () at kernel/debug/debug_core.c:1042
+			1042		arch_kgdb_breakpoint();
+			
+			(gdb)  i b   (information about break points)
+			No breakpoints or watchpoints.
+			(gdb)  b gpiod_request
+			Breakpoint 1 at 0xc03f6a50: file drivers/gpio/gpiolib.c, line 1461.
+			(gdb) c
+			Continuing.
+
+	-----------------------------------------------------------------------		
+	|Now ssh terminal and use the funtion of where the break point is set |
+	-----------------------------------------------------------------------
+
+												ssh
+												====
+								 root@ubuntu-armhf:/home/ubuntu# echo 60 > /sys/class/gpio/export
+
+				vmlinux
+				=======
+			Breakpoint 1, gpiod_request (desc=0xc0c084d8 <gpio_desc+720>, label=label@entry=0xc0951a13 "sysfs") at drivers/   				gpio/gpiolib.c:1461
+			warning: Source file is more recent than executable.
+			1461	{
+			(gdb) bt
+			
+			(run bt command and analyze the code )
+					
+			(gdb) c
+			Continueing. 			
+				--------------------------------------------------
+				|Inserting module into the kernel for panic error|
+				--------------------------------------------------
+												ssh
+												====
+								root@ubuntu-armhf:/home/ubuntu# insmod char.ko
+								root@ubuntu-armhf:/home/ubuntu# mknod /dev/mychar c 60 0
+								root@ubuntu-armhf:/home/ubuntu# cat /sys/module/char/sections/.data    
+								0xbf00025c
+								root@ubuntu-armhf:/home/ubuntu# cat /sys/module/char/sections/.text 
+								0xbf000000
+								root@ubuntu-armhf:/home/ubuntu# cat /sys/module/char/sections/.bss  
+								0xbf000454
+								root@ubuntu-armhf:/home/ubuntu# echo g > /proc/sysrq-trigger
+				
+				vmlinux
+				=======
+			
+	(gdb) b my_open
+	Function "my_open" not defined.
+	Make breakpoint pending on future shared library load? (y or [n]) n
+	(gdb) add-symbol-file /home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.ko 0xbf000000 -s .data 0xbf00025c -s .bss 0xbf000454
+
+	add symbol table from file "/home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.ko" at
+		.text_addr = 0xbf000000
+		.data_addr = 0xbf00025c
+		.bss_addr = 0xbf000454
+	(y or n) y
+	Reading symbols from /home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.ko...done.
+	
+	(gdb) b my_open
+	Breakpoint 2 at 0xbf000018: file /home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.c, line 55.
+	(gdb) c
+	Continuing.	
+								
+											ssh
+											====
+      							root@ubuntu-armhf:/home/ubuntu# cat /dev/mychar					
+				vmlinux
+				=======
+	[New Thread 948]
+	[Switching to Thread 948]
+
+	Breakpoint 2, my_open (ino=0xed5ae1b8, filp=0xed59d540) at /home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.c:55
+	55	{
+	(gdb) bt		
+		
+			--------------------------------------------
+			|Now take logs and analyze the panic error |
+			--------------------------------------------
+
+	(gdb) p ptr
+	$1 = (int *) 0x0 <__vectors_start>
+	(gdb) p gl
+	$2 = 100
+			
+					minicom
+					=======
+			enter $3#33 to enter kdb mode
+	
+			[0]kdb> 
+			[0]kdb> go
+			Catastrophic error detected
+			kdb_continue_catastrophic=0, type go a second time if you really want to continue
+			[0]kdb> go
+			Catastrophic error detected
+			kdb_continue_catastrophic=0, attempting to continue
+			[ 3321.263161] Unable to handle kernel NULL pointer dereference at virtual address 00000000
+			[ 3321.274431] pgd = ed554000
+			[ 3321.277301] [00000000] *pgd=ad631831, *pte=00000000, *ppte=00000000
+			[ 3321.284052] Internal error: Oops: 17 [#1] SMP ARM
+
+			Entering kdb (current=0xed5e0c80, pid 948) on processor 0 Oops: (null)
+			due to oops @ 0xbf000038
+
+			dCPU: 0 PID: 948 Comm: cat Tainted: G           O 3.14.1+ #2
+			dtask: ed5e0c80 ti: ec00a000 task.ti: ec00a000
+			PC is at my_open+0x20/0x48 [char]
+			LR is at my_open+0x10/0x48 [char]
+			pc : [<bf000038>]    lr : [<bf000028>]    psr: 600f0013
+			sp : ec00bde0  ip : c0ad5044  fp : 00000000
+			r10: ed59d548  r9 : ed780d00  r8 : ed59d540
+			r7 : 00000000  r6 : ed5ae1b8  r5 : bf000260  r4 : bf000454
+			r3 : 00000000  r2 : bf00025c  r1 : 00000064  r0 : bf00019a
+			Flags: nZCv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment user
+			Control: 10c5387d  Table: ad554019  DAC: 00000015
+			dCPU: 0 PID: 948 Comm: cat Tainted: G           O 3.14.1+ #2
+			[<c00148a0>] (unwind_backtrace) from [<c0011590>] (show_stack+0x10/0x14)
+			[<c0011590>] (show_stack) from [<c06f2dd4>] (dump_stack+0x68/0x84)
+			[<c06f2dd4>] (dump_stack) from [<c00ba454>] (kdb_dumpregs+0x28/0x50)
+			[<c00ba454>] (kdb_dumpregs) from [<c00bc5c0>] (kdb_main_loop+0x21c/0x6a4)
+
+
+
+
+$ arm-linux-gnueabihf-gdb char.ko 
+
+GNU gdb (crosstool-NG linaro-1.13.1-4.7-2012.10-20121022 - Linaro GCC 2012.10) 7.5-2012.09
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "--host=i686-build_pc-linux-gnu --target=arm-linux-gnueabihf".
+For bug reporting instructions, please see:
+<https://bugs.launchpad.net/gcc-linaro>...
+Reading symbols from /home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.ko...done.
+(gdb) l
+warning: Source file is more recent than executable.
+1	/***************************************************************************
+2	 *      Organisation    : Kernel Masters, KPHB, Hyderabad, India.          *
+3	 *      facebook page	: www.facebook.com/kernelmasters                   *
+4	 *                                                                         *
+5	 *  Conducting Workshops on - Embedded Linux & Device Drivers Training.    *
+6	 *  -------------------------------------------------------------------    *
+7	 *  Tel : 91-9949062828, Email : kernelmasters@gmail.com                   *
+8	 *                                                                         *
+9	 ***************************************************************************
+10	 *   This program is free software; you can redistribute it and/or modify  *
+(gdb) l
+11	 *   it under the terms of the GNU General Public License as published by  *
+12	 *   the Free Software Foundation. No warranty is attached; we cannot take *
+13	 *   responsibility for errors or fitness for use.                         *
+14	 ***************************************************************************/
+15	
+16	#include <linux/kernel.h> /* printk */
+17	#include <linux/module.h>/* This Header contains the necessary stuff for the Module */
+18	#include <linux/init.h> /* Required header for the Intialization and Cleanup Functionalities....  */
+19	#include <linux/fs.h> /* struct file_operations, struct file and struct inode */
+20	
+(gdb) l
+21	#define NAME "Mychar"
+22	#define MAJOR 60
+23	
+24	ssize_t my_read(struct file *, char __user *, size_t, loff_t *);
+25	ssize_t my_write(struct file *, const char __user *, size_t, loff_t *);
+26	int my_open(struct inode *, struct file *);
+27	int my_close(struct inode *, struct file *);
+28	
+29	struct file_operations fops = {
+30		.owner = THIS_MODULE,
+(gdb) l
+31		.read = my_read,
+32		.write = my_write,
+33		.open = my_open,
+34		.release = my_close
+35	};
+36	
+37	int *ptr=0;
+38	int gl=100;
+39	int gl_bss;
+40	
+(gdb) l
+41	/*Device methods */
+42	ssize_t my_read(struct file *filp, char __user *usr, size_t size, loff_t *off)
+43	{
+44		printk("Reading from device\n");
+45		return 0; //-EPERM;
+46	}
+47	
+48	ssize_t my_write(struct file *filp, const char __user *usr, size_t size, loff_t *off)
+49	{
+50		printk("Trying to write into the device\n");
+(gdb) l
+51		return size; //-EPERM;
+52	}
+53	
+54	int my_open(struct inode *ino, struct file *filp)
+55	{
+56		printk("device opened\n");
+57		printk("%d\n%d",gl,*ptr);
+58		gl_bss=200;	
+59		return 0;
+60	}
+(gdb) disass my_open
+Dump of assembler code for function my_open:
+   0x00000018 <+0>:	push	{r4, lr}
+   0x0000001c <+4>:	ldr	r4, [pc, #44]	; 0x50 <my_open+56>
+   0x00000020 <+8>:	ldr	r0, [pc, #44]	; 0x54 <my_open+60>
+   0x00000024 <+12>:	bl	0x24 <my_open+12>
+   0x00000028 <+16>:	ldr	r2, [pc, #40]	; 0x58 <my_open+64>
+   0x0000002c <+20>:	ldr	r3, [r4]
+   0x00000030 <+24>:	ldr	r0, [pc, #36]	; 0x5c <my_open+68>
+   0x00000034 <+28>:	ldr	r1, [r2]
+   0x00000038 <+32>:	ldr	r2, [r3]
+   0x0000003c <+36>:	bl	0x3c <my_open+36>
+   0x00000040 <+40>:	mov	r3, #200	; 0xc8
+   0x00000044 <+44>:	mov	r0, #0
+   0x00000048 <+48>:	str	r3, [r4, #4]
+   0x0000004c <+52>:	pop	{r4, pc}
+   0x00000050 <+56>:	andeq	r0, r0, r0
+   0x00000054 <+60>:	andeq	r0, r0, pc
+   0x00000058 <+64>:	andeq	r0, r0, r0
+   0x0000005c <+68>:	andeq	r0, r0, lr, lsl r0
+End of assembler dump.
+(gdb) l *(0x00000038)
+0x38 is in my_open (/home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/char.c:57).
+52	}
+53	
+54	int my_open(struct inode *ino, struct file *filp)
+55	{
+56		printk("device opened\n");
+57		printk("%d\n%d",gl,*ptr);
+58		gl_bss=200;	
+59		return 0;
+60	}
+61	
+
+
+
+module cross compilation:
+-------------------------
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -C /home/rajkumar/KM_GIT/amcu-kernel-3.14/ M=/home/rajkumar/KM_GIT/debug/KGDB_KDB/kernel_panic_oops/char/ modules
+
+
+###############################################################################################################################
+				am335x Beagle Bone Black
+###############################################################################################################################
+beagle bone black:
+=================
+board bringup:
+-------------
+links: 	 http://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black
+		
+
+u-boot:
+-------
+	$ git clone git://git.denx.de/u-boot.git
+	$ cd u-boot.git
+	$ make am335x_boneblack_defconfig
+	$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- 	
+		
+		We should get a MLO and u-boot.bin file in the current directory.
+
+uEnv.txt:
+---------
+Create a file uEnv.txt and copy below commands
+	
+bootargs=console=ttyO0,115200n8 root=/dev/mmcblk0p2 mem=128M rootwait
+bootcmd=mmc rescan; fatload mmc 0 0x82000000 uImage; bootm 0x82000000
+uenvcmd=boot
+
+
+kernel:
+-------
+	link:	http://elinux.org/Building_BBB_Kernel
+
+	$ git clone git://github.com/beagleboard/kernel.git
+	$ cd kernel
+The Linux Kernel is compressed using lzo. Install the lzop parallel file compressor
+	$ sudo apt-get install lzop	
+	$ git checkout 3.8
+	$ ./patch.sh
+	$ cp configs/beaglebone kernel/arch/arm/configs/beaglebone_defconfig
+	$ wget http://arago-project.org/git/projects/?p=am33x-cm3.git\;a=blob_plain\;f=bin/am335x-pm-firmware.bin\;hb=HEAD -O kernel/firmware/am335x-pm-firmware.bin
+	$ cd kernel
+	$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- beaglebone_defconfig -j4
+	$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage dtbs -j4
+	$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage-dtb.am335x-boneblack
+
+Changing mux configuration(overlays 3.8kernel):
+====================================
+
+Follow this video:
+
+		https://www.youtube.com/watch?v=wui_wU1AeQc
+
+		https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/compiling-an-overlay
+
+install device-tree-compiler using
+	$ sudo apt-get install device-tree-compiler
+
+	$ wget -c https://raw.githubusercontent.com/RobertCNelson/tools/master/pkgs/dtc.sh
+ 	$ chmod +x dtc.sh
+	$ ./dtc.sh
+
+clone the bone device tree using
+	$ git clone https://github.com/derekmolloy/boneDeviceTree.git
+
+In bonedevice tree goto overlays
+	$ cd overlays
+	
+In overlays folder open DM-GPIO-Test.dts and add the gpio offset address and mode as of ur requirement
+ 
+then run build
+	$ ./build
+		---> it generates DM-GPIO-Test-00A0.dtbo
+ 
+copy DM-GPIO-Test-00A0.dtbo into /lib/firmware 
+	$ sudo cp DM-GPIO-Test-00A0.dtbo /lib/firmware
+
+copy the firmware into sdcard 
+	$ sudo cp -r /lib/firmware /media/<user>/rootfs/lib
+
+after booting the kernel run these commands
+
+	[RAJKUMAR]# export SLOTS=/sys/devices/bone_capemgr.9/slots
+ 	[RAJKUMAR]# export PINS=/debug/pinctrl/44e10800.pinmux/pins
+	[RAJKUMAR]# echo DM-GPIO-Test > $SLOTS
+output of the above command
+
+[   41.866632] bone-capemgr bone_capemgr.9: part_number 'DM-GPIO-Test', version 'N/A'
+[   41.874688] bone-capemgr bone_capemgr.9: slot #7: generic override
+[   41.881180] bone-capemgr bone_capemgr.9: bone: Using override eeprom data at slot 7
+[   41.889194] bone-capemgr bone_capemgr.9: slot #7: 'Override Board Name,00A0,Override Manuf,DM-GPIO-Test'
+[   41.899211] bone-capemgr bone_capemgr.9: slot #7: Requesting part number/version based 'DM-GPIO-Test-00A0.dtbo
+[   41.909676] bone-capemgr bone_capemgr.9: slot #7: Requesting firmware 'DM-GPIO-Test-00A0.dtbo' for board-name 'Override Board Name', versio'
+[   41.927719] bone-capemgr bone_capemgr.9: slot #7: dtbo 'DM-GPIO-Test-00A0.dtbo' loaded; converting to live tree
+[   41.938537] bone-capemgr bone_capemgr.9: slot #7: #2 overlays
+[   41.945782] bone-capemgr bone_capemgr.9: slot #7: Applied #2 overlays.
+
+check the mode using following command
+	[RAJ KUMAR]#cat $PINS |grep <phisical addrss(Ex:8a0)>
+	pin 40 (44e108a0) 00000007 pinctrl-single
+
+if the mode doesn't change check the changes in the device tree overlays
+
+then check the gpio pins using sysfs(sys/class/gpio)
+
+=============================================================================================================================================
+=============================================================================================================================================
+
+kernel 3.14.4.1 for beagle bone black:
+======================================
+		 --------------------------------------------------------------------
+		|link: http://www.armhf.com/boards/beaglebone-black/bbb-sd-install/  |
+		 --------------------------------------------------------------------
+
+BeagleBone Black microSD Card Installation :
+-------------------------------------------
+	Insert the microSD Card into your computer and observe which device it registers as by typing ls /dev/sd*. If you are uncertain, remove the microSD Card and the entry should go away. Once you know which device your microSD Card is, follow the instructions below
+
+replacing /dev/sdX with the name of the microSD Card in your system.
+
+1.Begin partitioning the microSD Card by typing   ( sudo fdisk /dev/sdX )
+
+2.Initialize a new partition table by selecting ( o ), then verify the partition table is empty by selecting ( p ).
+
+3.Create a boot partition by selecting ( n ) for ‘new’, then ( p ) for ‘primary’, and ( 1 ) to specify the first partition. Press ( enter ) to accept the default first sector and specify ( 4095 ) for the last sector.
+
+4.Change the partition type to FAT16 by selecting ( t ) for ‘type’ and ( e ) for ‘W95 FAT16 (LBA)’.
+
+5.Set the partition bootable by selecting ( a ) then ( 1 ).
+
+6.Next, create the data partition for the root filesystem by selecting ( n ) for ‘new’, then ( p ) for ‘primary’, and ( 2 ) to specify the second partition. Accept the default values for the first and last sectors by pressing ( enter twice ).
+
+7.Press ( p ) to ‘print’ the partition table. It should look similar to the one below.
+
+	Disk /dev/sdb: 7948 MB, 7948206080 bytes
+	255 heads, 63 sectors/track, 966 cylinders, total 15523840 sectors
+	Units = sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disk identifier: 0xafb3f87b
+
+	   Device Boot      Start         End      Blocks   Id  System
+0	/dev/sdb1   *        2048        4095        1024    e  W95 FAT16 (LBA)
+	/dev/sdb2            4096    15523839     7759872   83  Linux
+
+8.Finally, commit the changes by selecting ( w ) to ‘write’ the partition table and exit fdisk.
+
+9.Format the Partitions
+	Format partition 1 as FAT by typing ( sudo mkfs.vfat /dev/sdX1 )
+	Format partition 2 as ext4 by typing ( sudo mkfs.ext4 /dev/sdX2 )
+0
+Prebuilt Images :
+=================
+Install u-boot to the microSD Card :
+-----------------------------------
+
+	wget http://s3.armhf.com/dist/bone/bone-uboot.tar.xz
+	mkdir boot
+	sudo mount /dev/sdb1 boot
+	sudo tar xJvf bone-uboot.tar.xz -C boot
+	sudo umount boot
+
+Install the desired root filesystem to the microSD Card (ubuntu trusty in this example) :
+---------------------------------------------------------------------------------------
+
+	wget http://s3.armhf.com/dist/bone/ubuntu-trusty-14.04-rootfs-3.14.4.1-bone-armhf.com.tar.xz
+	mkdir rootfs
+	sudo mount /dev/sdb2 rootfs
+	sudo tar xJvf ubuntu-trusty-14.04-rootfs-3.14.4.1-bone-armhf.com.tar.xz -C rootfs
+	sudo umount rootfs
+
+The microSD Card is now ready to boot. Note that for ubuntu installations, the login userid is  ( ubuntu ) and the password is ( ubuntu ). Likewise for debian installations, the login userid is ( debian ) and the password is ( debian ).
+Tip: The package cache has been flushed to reduce the size of the images. Run apt-get update after boot to update the package cache, then run apt-get upgrade to ensure the latest updates are installed.
+
+Ownbuilt Images :
+=================
+
+$ git clone git://github.com/beagleboard/kernel.git
+
+$ cd kernel
+
+$ git checkout 3.14
+
+$ ./patch.sh
+
+$ cp configs/beaglebone kernel/arch/arm/configs/beaglebone_defconfig
+
+$ wget http://arago-project.org/git/projects/?p=am33x-cm3.git\;a=blob_plain\;f=bin/am335x-pm-firmware.bin\;hb=HEAD -O kernel/firmware/am335x-pm-firmware.bin
+
+$ cd kernel
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- beaglebone_defconfig -j4
+
+$ cd /root/beaglebone/kernel/kernel
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage dtbs LOADADDR=0x80008000 -j4
+
+This step builds the kernel for the BBB:
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage am335x-boneblack.dtb LOADADDR=0x80008000 -j4
+
+copy zImage into the sdcard:
+$ sudo cp arch/arm/boot/zImage /media/rajkumar/23c3a045-4b7d-48db-9efd-e50f12d9af01/boot/vmlinuz-3.14.4.1-bone-armhf.com
+$ sudo cp arch/arm/boot/zImage /media/rajkumar/23c3a045-4b7d-48db-9efd-e50f12d9af01/boot/
+
+copy .config into the sdcard:
+$ sudo cp .config /media/rajkumar/23c3a045-4b7d-48db-9efd-e50f12d9af01/boot/config-3.14.4.1-bone-armhf.com
+
+copy am335x-boneblack.dtb file into the dtbs:
+
+$ sudo cp arch/arm/boot/dts/am335x-boneblack.dtb /media/rajkumar/23c3a045-4b7d-48db-9efd-e50f12d9af01/boot/dtbs
+
+
+INTERNAL ADC interfacing
+------------------------
+http://stackoverflow.com/questions/22818751/beagle-bone-adc-read-values
+
+
+
+If rootfs is in read only file system add this command in init.d :
+-----------------------------------------------------------------
+
+mount -o remount,rw /
+
+MySQL:
+======
+
+https://www.linode.com/docs/databases/mysql/install-mysql-on-ubuntu-14-04
+
+
+export LC_ALL="en_US.UTF-8"
+
+1.sudo apt-get update
+  sudo apt-get upgrade
+
+2.sudo apt-get install mysql-server
+  	During the installation process, you will be prompted to set a password for the MySQL root user
+
+3.sudo mysql_secure_installation
+
+4.To log in to MySQL as the root user:
+	mysql -u root -p
+
+You’ll then be presented with the MySQL monitor prompt:
+		Welcome to the MySQL monitor.  Commands end with ; or \g.
+		Your MySQL connection id is 1
+		Server version: 5.0.45 Source distribution
+
+		Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+		mysql>
+
+5.Create a Sample Table+
+	mysql -u testuser -p
+
+mysql using C:
+==============
+http://zetcode.com/db/mysqlc/
+
+php5:
+====
+$ sudo apt-get install php5 
+
+
+phpmyadmin:
+=========
+
+$ sudo apt-get install mcrypt                                             
+
+$ sudo service apache2 restart
+
+$ sudo apt-get install phpmyadmin
+
+$ sudo vim /etc/apache2/apache2.conf
+
+		Include /etc/phpmyadmin/apache.conf
+
+$ sudo service apache2 restart
+
+reset the mysql password:
+=========================
+$ mysql -u root -p
+
+$ FLUSH PRIVILEGES;
+
+$ SET PASSWORD FOR root@'localhost' = PASSWORD('password');
+
+mysql commands:
+===============
+$ mysql -u root --password=1234
+
+$ CREATE TABLE Cow(ID INT(11) NOT NULL AUTO_INCREMENT,Name VARCHAR(50) NOT NULL,mobile_no VARCHAR(15) NOT NULL,Deleted VARCHAR(5) NOT NULL,PRIMARY KEY (ID));
+
+$ CREATE TABLE Buffalo(ID INT(11) NOT NULL AUTO_INCREMENT,Name VARCHAR(50) NOT NULL,mobile_no VARCHAR(15) NOT NULL,Deleted VARCHAR(5) NOT NULL,PRIMARY KEY (ID));
+
+mysql> use customers;
+
+mysql> CREATE TABLE custmor(ID INT NOT NULL AUTO_INCREMENT,Name VARCHAR(50) NOT NULL,mobile_no VARCHAR(15) NOT NULL,Cattle_type VARCHAR(8) NOT NULL,PRIMARY KEY (ID));
+
+//
+CREATE TABLE Monitoring (sr INT NOT NULL AUTO_INCREMENT,Parameter VARCHAR(50) NOT NULL,Value VARCHAR(8) NOT NULL,PRIMARY KEY (sr));
+INSERT INTO Monitoring (Parameter,Value) VALUES("Voltage","1234");
+update Monitoring set Value=125 where Parameter="Voltage";
+https://support.rackspace.com/how-to/set-up-mysql-master-slave-replication/
+//
+
+select * from (select ID,Name,mobile_no from Cow where Deleted="NO") AS account;
+
+select ID,Name,mobile_no from Cow where Deleted="NO" and ID between 1 and 50;
+
+mysql> show tables;
+
+mysql> describe customers_list;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| ID          | int(11)     | NO   | PRI | NULL    | auto_increment |
+| Name        | varchar(50) | NO   |     | NULL    |                |
+| mobile_no   | varchar(15) | NO   |     | NULL    |                |
+| Cattle_type | varchar(8)  | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+increment the id from 501:
+--------------------------
+after creating the table 
+ALTER TABLE buff AUTO_INCREMENT = 501;
+
+delete a coloun from table:
+ALTER TABLE Cow DROP Cattle_type;
+
+
+INSERT INTO buff (Name,mobile_no,Cattle_type) VALUES("ashok G","9789645123","Buffalo");
+
+	mysql> select * from buff;
+	+-----+-------------+------------+-------------+
+	| ID  | Name        | mobile_no  | Cattle_type |
+	+-----+-------------+------------+-------------+
+	| 501 | Raju  Kumar | 9012345678 | Buffalo     |
+	| 502 | ramadevi    | 9236987415 | Buffalo     |
+	| 503 | ashok G     | 9789645123 | Buffalo     |
+	+-----+-------------+------------+-------------+
+
+
+INSERT INTO cow (Name,mobile_no,Cattle_type) VALUES("rama naidu","9491764629","Cow");
+
+	mysql> select * from cow;
+	+----+---------------+--------------+-------------+
+	| ID | Name          | mobile_no    | Cattle_type |	
+	+----+---------------+--------------+-------------+
+	|  1 | rama naidu    | 9491764629   | Cow         |
+	|  2 | sameer        | 901020304050 | Cow         |
+	|  3 | kishore boddu | 949741239    | Cow         |
+	+----+---------------+--------------+-------------+
+
+delete from milk_collection where ID=2; 
+
+INSERT INTO milk_collection(ID,Name,mobile_no,cattle_type,Shift,Time,Date,Milk_Weight,Fat,Rate_per_Ltr,Total,Edited_yes_no) VALUES(3,"kishore boddu","9236987415","Cow","E",NOW(),NOW(),5.5,8.5,35,255,"No");
+
+automatically update AM/PM:
+
+INSERT INTO milk_collection(ID,cattle_type,Shift,Time,Date,Milk_Weight,Fat,Rate_per_Ltr,Amount,Edited_yes_no) VALUES(3,"Cow",DATE_FORMAT( NOW( ) , '%p' ),NOW(),NOW(),5.5,8.5,35,255,"No");
+
+SELECT DATE_FORMAT( NOW( ) , '%p' );
+
+cow_fat table:
+--------------
+
+CREATE TABLE Cow_Fat(Fat dec(6,3),Rate dec(6,3));
+
+
+use Rate_Tables;
+INSERT INTO Cow_Fat (Fat,Rate) VALUES(2.0,15.1);
+exit
+
+edditing tables:
+----------------
+update Cow_Fat set Rate=2.5 where Fat=2.2;
+
+update Cow_Fat set Fat=2.0,Rate=4.5;
+
+delimiter //
+CREATE PROCEDURE ABC()
+   BEGIN
+      DECLARE a FLOAT Default 2.0 ;
+      simple_loop: LOOP
+         INSERT INTO Cow_Fat (Fat,Rate) VALUES(a,0);
+         SET a=a+0.1;
+         IF a>=8 THEN
+            LEAVE simple_loop;
+         END IF;
+   END LOOP simple_loop;
+END;
+//
+delimiter ;
+call GetId();
+drop procedure GetId;
+exit
+
+local sell rate and collection rate:
+------------------------------------
+create database Rate_Tables;
+
+create table Sell_rate(cattle_type varchar(10),Amount dec(6,3));
+
+insert into Sell_rate(cattle_type,Amount)values("cow",5);
+
+select Amount from Sell_rate where cattle_type="cow";
+
+update Sell_rate set Amount=12.5 where Cattle_type="cow";
+
+configurations:
+---------------
+create table Weighting_Setting(ID int(11),Function varchar(30),Depend varchar(30));
+
+insert into General_Configuration(ID,Function,Depend) values(1,"Society_Name","RAAYANSYSTEMS PVT. LTD.");
+
+select Depend from General_Configuration;
+
+password:
+---------
+select Password from PASSWORD where PrevilegeName="User";
+
+update PASSWORD set Password="1234" where PrevilegeName="User";
+
+delete from tableName;
+
+delete from milk_collection where Edited_yes_no="yes";
+
+delete from milk_cokkection where Shift="AM";
+
+name:
+-----
+select config_value from CONFIG_DATA where config_name="SOCIETY_NAME";
+
+update CONFIG_DATA set config_value="RAAYAN" where config_name="SOCIETY_NAME";
+
+weight:
+------- 
+select config_value from CONFIG_DATA where config_name="SCALE_TYPE";
+update CONFIG_DATA set config_value="Auto" where config_name="SCALE_TYPE";
+
+printer:
+--------
+select Type from PRINTER_TYPE;
+update CONFIG_DATA set config_value="NONE" where config_name="PRINTER_TYPE";
+
+SELECT * FROM Master_Data INTO OUTFILE /home/rajkumar/tutorials.txt;
+
+
+
+
+eMMC flashing :
+==============
+Prebuilt Images:
+-----------------
+$ wget https://rcn-ee.com/rootfs/2016-04-07/flasher/BBB-eMMC-flasher-ubuntu-xenial-console-armhf-2016-04-07-2gb.img.xz
+
+$ xz -d BBB-eMMC-flasher-ubuntu-xenial-console-armhf-2016-04-07-2gb.img.xz
+
+$ sudo dd if=./BBB-eMMC-flasher-ubuntu-xenial-console-armhf-2016-04-07-2gb.img of=/dev/sdX
+
+Flashing Procedure:
+-------------------
+1.You should perform this process with only a single 5V 2A power supply plugged into the DC jack. Alternatively, you can use a USB adapter for power. Disconnect the Ethernet cable and remove any shields and USB peripherals.
+
+2.Power off your BBB by physically disconnecting the USB/power cable.Plug the micro-SD card into the BBB’s micro-SD card slot.
+Hold the Boot Button (S2) on the top right (near the SD card slot) and, while holding this button, insert the USB/power lead to connect the power. Keep holding the button until the LEDs start to flash. The blue on-board LEDs should light in sequence and then continue to flash for the next 5–15 minutes (depending on the distribution used and the speed of the SD card).
+
+3.Wait until the LEDs stop blinking and all 4 LEDs are fully lit (the latest image then powers the board down). This process can take 5-15 minutes depending on the image used. If the flashing procedure fails—for example, no LEDs flash, or it keeps running for more than 45 minutes —then disconnect the power and try restarting the BBB with the S2 button pressed.
+
+Ownbuilt Images:
+----------------
+link :https://e2e.ti.com/support/embedded/linux/f/354/t/398780
+
+1. Run the BBB from the SD card (hold the USR button when powering the board up)
+
+2. The eMMC is /dev/mmcblk1. Format it this way:
+   
+   $ sudo fdisk /dev/mmcblk1
+	 o - this clears the existing partitions
+	 p - this lists all partition tables on the card (there should be none)
+	 n - create a new partition
+	 p - primary partition
+	 1 - partition number
+	 2048 - default value for the first sector
+	 +16M - last sector / partition size
+	 t - change the partition type (select partition 1)
+	 e - change the partition type to "W95 FAT16 (LBA)"
+	 a - set the bootable flag for the selected partition (1)
+	 n - create a new partition
+	 p - primary partition
+	 2 - partition number
+	 hit Enter to choose the default (next available) value for the first sector
+	 hit Enter to choose the default (last) value for the last sector
+	 p - this lists all partition tables on the card (there should be two)
+	 w - write all the above changes to disk
+	 
+	$ sudo mkfs.vfat -F 16 /dev/mmcblk1p1 - format the first partition
+	$ sudo mkfs.ext4 /dev/mmcblk1p2 - format the second partition
+
+Now you are formatted eMMC with 2 partitions. First is "W95 FAT16 (LBA)" and second is Linux. 
+
+3. Copy the {MLO,u-boot.img,uEnv.txt} files to the first partition:
+	
+	mkdir boot
+	mount /dev/mmcblk1p1 boot
+	sudo tar xJvf bone-uboot.tar.xz -C boot	
+	umount boot
+
+4. Copy the root file system to the second partition:
+
+	mkdir rootfs
+	mount /dev/mmcblk1p2 rootfs
+	sudo tar xJvf ubuntu-trusty-14.04-rootfs-3.14.4.1-bone-armhf.com.tar.xz -C rootfs
+	umount rootfs
+
+5. Shutdown the BBB, remove the SD card and start it from the eMMC.
+
+
+
+==>>========================<<==
+==>>nfs(Network file system)<<==
+==>>========================<<==
+		192.168.1.19=client IP address
+		192.168.1.46=server IP address
+
+On server:
+----------
+
+1.install the nfsserver
+	$ sudo apt-get install nfs-kernel-server
+
+2.add this line into the /etc/export
+
+	$ sudo vim /etc/export
+		/var/www/html 192.168.1.19(rw,sync,no_root_squash,no_subtree_check)
+3.To apply export
+	$ sudo exportfs -a
+
+4.Restart the server
+	$ sudo server nfs-kernel-server restart
+
+5.sudo showmount -e
+
+
+On client:
+----------
+
+1.install the nfs
+	$ sudo apt-get install nfs-common
+
+2.mount 192.168.1.46:/var/www/html /var/www/html
+
+3.df -h
+
+4.cd /var/www/html
+
+Testing nfs:
+-----------
+1.create a file on server side
+	$ sudo vim /var/www/html/first.txt
+		
+2.check that file shows inthe client side or not
+	$ ls /var/www/html
+
+
+mount during the system start up time:
+--------------------------------------
+
+$ mount -t nfs
+
+$ sudo vim /etc/fstab
+
+	mount 192.168.1.46:/var/www/html /var/www/html  nfs  defaults  0  0
+
+
+
+
+ direkmolly
+
+
+akash ganga video:
+------------------
+http://akashganga.in/KeyBenefits.html
